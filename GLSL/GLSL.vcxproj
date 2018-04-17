@@ -152,6 +152,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\MyApplication.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Time.cpp" />
     <ClCompile Include="src\VertexBuffer.cpp" />
     <ClCompile Include="src\Window.cpp" />
