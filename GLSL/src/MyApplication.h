@@ -3,6 +3,7 @@
 #include "Application.h"
 #include "Shader.h"
 #include "Material.h"
+#include "VertexArray.h"
 #include "VertexBuffer.h"
 #include "ElementBuffer.h"
 
@@ -13,9 +14,9 @@ private:
 	Material cubeMat;
 	Material lightMat;
 
+	VertexArray vA;
 	VertexBuffer vB;
 	ElementBuffer eB;
-	unsigned int VAO;
 
 public:
 	virtual void Start();

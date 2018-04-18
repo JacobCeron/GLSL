@@ -25,8 +25,7 @@ void MyApplication::Start()
 	Mesh mesh;
 	mesh.loadModel("src\\models\\cube.obj");
 
-	glGenVertexArrays(1, &VAO);
-	glBindVertexArray(VAO);
+	vA.init();
 
 	size_t iPosSize{ sizeof(mesh.indexPosition[0]) * mesh.indexPosition.size() };
 	size_t iNorSize{ sizeof(mesh.indexNormal[0]) * mesh.indexNormal.size() };
@@ -74,7 +73,7 @@ void MyApplication::Update()
 	static glm::vec3 lightPos(1.5f, 1.5f, 1.5f);
 	cubeMat.setVector3("lightPos", lightPos);
 
-	glBindVertexArray(VAO);
+	vA.bind();
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 
 	model = glm::mat4();
@@ -86,6 +85,6 @@ void MyApplication::Update()
 	lightMat.setMatrix4x4("transforms.view", view);
 	lightMat.setMatrix4x4("transforms.projection", projection);
 
-	glBindVertexArray(VAO);
+	vA.bind();
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 }
