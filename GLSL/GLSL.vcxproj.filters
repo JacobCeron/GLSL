@@ -90,4 +90,7 @@
       <Filter>Header Files</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\models\cube.obj" />
+  </ItemGroup>
 </Project>

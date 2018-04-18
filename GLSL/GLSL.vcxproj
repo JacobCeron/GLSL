@@ -177,6 +177,9 @@
     <None Include="src\shaders\light.vert" />
     <None Include="src\Vector.inl" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\models\cube.obj" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

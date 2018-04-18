@@ -23,7 +23,7 @@ void MyApplication::Start()
 	lightMat.shader = shaderLight;
 
 	Mesh mesh;
-	mesh.loadModel("C:\\Users\\UserHp\\Desktop\\Cube.txt");
+	mesh.loadModel("src\\models\\cube.obj");
 
 	glGenVertexArrays(1, &VAO);
 	glBindVertexArray(VAO);
