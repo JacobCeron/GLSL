@@ -150,6 +150,7 @@
     <ClCompile Include="src\ElementBuffer.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Material.cpp" />
     <ClCompile Include="src\MyApplication.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
@@ -160,6 +161,7 @@
   <ItemGroup>
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\ElementBuffer.h" />
+    <ClInclude Include="src\Material.h" />
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\MyApplication.h" />
     <ClInclude Include="src\Shader.h" />

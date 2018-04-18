@@ -8,6 +8,7 @@ Mesh::Mesh()
 {
 }
 
+// .OBJ loader
 void Mesh::loadModel(const char* fileName)
 {
 	std::ifstream file(fileName);
@@ -70,9 +71,9 @@ void Mesh::loadModel(const char* fileName)
 					break;
 				}
 			}
-			indicesPosition.push_back(iv);
-			indicesUV.push_back(ivt);
-			indicesNormal.push_back(ivn);
+			indexPosition.push_back(iv);
+			indexUV.push_back(ivt);
+			indexNormal.push_back(ivn);
 		}
 	}
 }

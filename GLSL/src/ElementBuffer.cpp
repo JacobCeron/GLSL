@@ -1,4 +1,5 @@
 #include <glad\glad.h>
+
 #include "ElementBuffer.h"
 
 void ElementBuffer::init(size_t size, const void* data)

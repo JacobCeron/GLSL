@@ -2,96 +2,45 @@
 #include <glm\glm.hpp>
 #include <glm\gtc\matrix_transform.hpp>
 
-#include <iostream>
-
 #include "MyApplication.h"
 #include "Time.h"
-#include "Vector.h"
+#include "Mesh.h"
 
 void MyApplication::Start()
 {
-	Vector<float, 4> a{ 1, 2, 3, 4 };
-	Vector<float, 4> b{ 5, 6, 7, 8 };
-
-	Vector<float, 4> c(a);
-	for (const auto& _c : c)
-		std::cout << _c << " ";
-	std::cout << std::endl;
-
-	std::cout << Vector<int, 4>::magnitud(c) << std::endl;
-
+	Shader shaderCube;
 	shaderCube.compileShader(Shader::readShaderFile("src\\shaders\\cube.vert").c_str(), Shader::VERTEX);
 	shaderCube.compileShader(Shader::readShaderFile("src\\shaders\\cube.frag").c_str(), Shader::FRAGMENT);
 	shaderCube.linkProgram();
 
+	cubeMat.shader = shaderCube;
+
+	Shader shaderLight;
 	shaderLight.compileShader(Shader::readShaderFile("src\\shaders\\light.vert").c_str(), Shader::VERTEX);
 	shaderLight.compileShader(Shader::readShaderFile("src\\shaders\\light.frag").c_str(), Shader::FRAGMENT);
 	shaderLight.linkProgram();
 
-	Vector<float, 3> pos[]
-	{
-		Vector<float, 3>{-0.5f, -0.5f, 0.5f},
-		Vector<float, 3>{0.5f, -0.5f, 0.5f},
-		Vector<float, 3>{-0.5f, 0.5f, 0.5f},
-		Vector<float, 3>{0.5f, 0.5f, 0.5f},
-		Vector<float, 3>{-0.5f, 0.5f, -0.5f},
-		Vector<float, 3>{0.5f, 0.5f, -0.5f},
-		Vector<float, 3>{-0.5f, -0.5f, -0.5f},
-		Vector<float, 3>{0.5f, -0.5f, -0.5f}
-	};
+	lightMat.shader = shaderLight;
 
-	Vector<float, 3> nor[]
-	{
-		Vector<float, 3>{0.0f, 0.0f, 1.0f},
-		Vector<float, 3>{0.0f, 1.0f, 0.0f},
-		Vector<float, 3>{0.0f, 0.0f, -1.0f},
-		Vector<float, 3>{0.0f, -1.0f, 0.0f},
-		Vector<float, 3>{1.0f, 0.0f, 0.0f},
-		Vector<float, 3>{-1.0f, 0.0f, 0.0f}
-	};
-
-	Vector<unsigned int, 3> indP[]
-	{
-		Vector<unsigned int, 3>{0, 1, 2},
-		Vector<unsigned int, 3>{2, 1, 3},
-		Vector<unsigned int, 3>{2, 3, 4},
-		Vector<unsigned int, 3>{4, 3, 5},
-		Vector<unsigned int, 3>{4, 5, 6},
-		Vector<unsigned int, 3>{6, 5, 7},
-		Vector<unsigned int, 3>{6, 7, 0},
-		Vector<unsigned int, 3>{0, 7, 1},
-		Vector<unsigned int, 3>{1, 7, 3},
-		Vector<unsigned int, 3>{3, 7, 5},
-		Vector<unsigned int, 3>{6, 0, 4},
-		Vector<unsigned int, 3>{4, 0, 2},
-	};
-
-	Vector<unsigned int, 3> indN[]
-	{
-		Vector<unsigned int, 3>{0, 0, 0},
-		Vector<unsigned int, 3>{0, 0, 0},
-		Vector<unsigned int, 3>{1, 1, 1},
-		Vector<unsigned int, 3>{1, 1, 1},
-		Vector<unsigned int, 3>{2, 2, 2},
-		Vector<unsigned int, 3>{2, 2, 2},
-		Vector<unsigned int, 3>{3, 3, 3},
-		Vector<unsigned int, 3>{3, 3, 3},
-		Vector<unsigned int, 3>{4, 4, 4},
-		Vector<unsigned int, 3>{4, 4, 4},
-		Vector<unsigned int, 3>{5, 5, 5},
-		Vector<unsigned int, 3>{5, 5, 5},
-	};
+	Mesh mesh;
+	mesh.loadModel("C:\\Users\\UserHp\\Desktop\\Cube.txt");
 
 	glGenVertexArrays(1, &VAO);
 	glBindVertexArray(VAO);
 
-	eB.init(sizeof(indP) + sizeof(indN), nullptr);
-	eB.updateData(0, sizeof(indP), indP);
-	eB.updateData(sizeof(indP), sizeof(indN), indN);
+	size_t iPosSize{ sizeof(mesh.indexPosition[0]) * mesh.indexPosition.size() };
+	size_t iNorSize{ sizeof(mesh.indexNormal[0]) * mesh.indexNormal.size() };
 
-	vB.init(sizeof(pos) + sizeof(nor), nullptr);
-	vB.updateData(0, sizeof(pos), pos);
-	vB.updateData(sizeof(pos), sizeof(nor), nor);
+	eB.init(iPosSize + iNorSize, nullptr);
+	eB.updateData(0, iPosSize, &mesh.indexPosition[0]);
+	eB.updateData(iPosSize, iNorSize, &mesh.indexNormal[0]);
+
+	size_t posSize{ sizeof(mesh.position[0]) * mesh.position.size() };
+	size_t norSize{ sizeof(mesh.normal[0]) * mesh.normal.size() };
+
+	vB.init(posSize + norSize, nullptr);
+	vB.updateData(0, posSize, &mesh.position[0]);
+	vB.updateData(posSize, norSize, &mesh.normal[0]);
 
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 	glEnableVertexAttribArray(0);
@@ -116,16 +65,14 @@ void MyApplication::Update()
 	glm::mat4 projection;
 	projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
 
-	shaderCube.use();
-	shaderCube("transforms.model", model);
-	shaderCube("transforms.view", view);
-	shaderCube("transforms.projection", projection);
-
-	shaderCube("color", glm::vec3(sin(time / 6.0f * 2.0f), sin(time / 6.0f) + 0.15, cos(time / 6.0f) + 0.25));
-	shaderCube("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
-
-	static glm::vec3 lightPos (1.5f, 1.5f, 1.5f);
-	shaderCube("lightPos", lightPos);
+	cubeMat.shader.use();
+	cubeMat.setMatrix4x4("transforms.model", model);
+	cubeMat.setMatrix4x4("transforms.view", view);
+	cubeMat.setMatrix4x4("transforms.projection", projection);
+	cubeMat.setVector3("color", glm::vec3(sin(time / 6.0f * 2.0f), sin(time / 6.0f) + 0.15, cos(time / 6.0f) + 0.25));
+	cubeMat.setVector3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
+	static glm::vec3 lightPos(1.5f, 1.5f, 1.5f);
+	cubeMat.setVector3("lightPos", lightPos);
 
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
@@ -134,10 +81,10 @@ void MyApplication::Update()
 	model = glm::translate(model, lightPos);
 	model = glm::scale(model, glm::vec3(0.25f));
 
-	shaderLight.use();
-	shaderLight("transforms.model", model);
-	shaderLight("transforms.view", view);
-	shaderLight("transforms.projection", projection);
+	lightMat.shader.use();
+	lightMat.setMatrix4x4("transforms.model", model);
+	lightMat.setMatrix4x4("transforms.view", view);
+	lightMat.setMatrix4x4("transforms.projection", projection);
 
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);

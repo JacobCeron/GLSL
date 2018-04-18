@@ -2,6 +2,7 @@
 
 #include "Application.h"
 #include "Shader.h"
+#include "Material.h"
 #include "VertexBuffer.h"
 #include "ElementBuffer.h"
 
@@ -9,8 +10,8 @@ class MyApplication :
 	public Application
 {
 private:
-	Shader shaderCube;
-	Shader shaderLight;
+	Material cubeMat;
+	Material lightMat;
 
 	VertexBuffer vB;
 	ElementBuffer eB;

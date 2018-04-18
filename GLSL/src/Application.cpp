@@ -1,7 +1,6 @@
 #include "Application.h"
 #include "Time.h"
 
-
 Application::Application()
 {
 }
