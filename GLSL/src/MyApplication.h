@@ -1,22 +1,15 @@
 #pragma once
 
 #include "Application.h"
-#include "Shader.h"
-#include "Material.h"
-#include "VertexArray.h"
-#include "VertexBuffer.h"
-#include "ElementBuffer.h"
+
+#include "RenderMesh.h"
 
 class MyApplication :
 	public Application
 {
 private:
-	Material cubeMat;
-	Material lightMat;
-
-	VertexArray vA;
-	VertexBuffer vB;
-	ElementBuffer eB;
+	RenderMesh cube;
+	RenderMesh light;
 
 public:
 	virtual void Start();

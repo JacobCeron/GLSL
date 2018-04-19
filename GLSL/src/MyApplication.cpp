@@ -13,38 +13,23 @@ void MyApplication::Start()
 	shaderCube.compileShader(Shader::readShaderFile("src\\shaders\\cube.frag").c_str(), Shader::FRAGMENT);
 	shaderCube.linkProgram();
 
-	cubeMat.shader = shaderCube;
+	cube.material.shader = shaderCube;
 
 	Shader shaderLight;
 	shaderLight.compileShader(Shader::readShaderFile("src\\shaders\\light.vert").c_str(), Shader::VERTEX);
 	shaderLight.compileShader(Shader::readShaderFile("src\\shaders\\light.frag").c_str(), Shader::FRAGMENT);
 	shaderLight.linkProgram();
 
-	lightMat.shader = shaderLight;
+	light.material.shader = shaderLight;
 
 	Mesh mesh;
 	mesh.loadModel("src\\models\\cube.obj");
 
-	vA.init();
+	cube.mesh = mesh;
+	light.mesh = mesh;
 
-	size_t iPosSize{ sizeof(mesh.indexPosition[0]) * mesh.indexPosition.size() };
-	size_t iNorSize{ sizeof(mesh.indexNormal[0]) * mesh.indexNormal.size() };
-
-	eB.init(iPosSize + iNorSize, nullptr);
-	eB.updateData(0, iPosSize, &mesh.indexPosition[0]);
-	eB.updateData(iPosSize, iNorSize, &mesh.indexNormal[0]);
-
-	size_t posSize{ sizeof(mesh.position[0]) * mesh.position.size() };
-	size_t norSize{ sizeof(mesh.normal[0]) * mesh.normal.size() };
-
-	vB.init(posSize + norSize, nullptr);
-	vB.updateData(0, posSize, &mesh.position[0]);
-	vB.updateData(posSize, norSize, &mesh.normal[0]);
-
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
-	glEnableVertexAttribArray(1);
+	cube.init();
+	light.init();
 
 	glEnable(GL_DEPTH_TEST);
 }
@@ -64,27 +49,27 @@ void MyApplication::Update()
 	glm::mat4 projection;
 	projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
 
-	cubeMat.shader.use();
-	cubeMat.setMatrix4x4("transforms.model", model);
-	cubeMat.setMatrix4x4("transforms.view", view);
-	cubeMat.setMatrix4x4("transforms.projection", projection);
-	cubeMat.setVector3("color", glm::vec3(sin(time / 6.0f * 2.0f), sin(time / 6.0f) + 0.15, cos(time / 6.0f) + 0.25));
-	cubeMat.setVector3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
 	static glm::vec3 lightPos(1.5f, 1.5f, 1.5f);
-	cubeMat.setVector3("lightPos", lightPos);
+	static glm::vec3 lightColor;
+	lightColor = glm::vec3(sin(time / 6.0f * 2.0f), sin(time / 6.0f) + 0.15, cos(time / 6.0f) + 0.25);
 
-	vA.bind();
-	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+	cube.material.shader.use();
+	cube.material.setMatrix4x4("transforms.model", model);
+	cube.material.setMatrix4x4("transforms.view", view);
+	cube.material.setMatrix4x4("transforms.projection", projection);
+	cube.material.setVector3("color", glm::vec3(1, 1, 1));
+	cube.material.setVector3("lightColor", lightColor);
+	cube.material.setVector3("lightPos", lightPos);
+	cube.draw();
 
 	model = glm::mat4();
 	model = glm::translate(model, lightPos);
 	model = glm::scale(model, glm::vec3(0.25f));
 
-	lightMat.shader.use();
-	lightMat.setMatrix4x4("transforms.model", model);
-	lightMat.setMatrix4x4("transforms.view", view);
-	lightMat.setMatrix4x4("transforms.projection", projection);
-
-	vA.bind();
-	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+	light.material.shader.use();
+	light.material.setMatrix4x4("transforms.model", model);
+	light.material.setMatrix4x4("transforms.view", view);
+	light.material.setMatrix4x4("transforms.projection", projection);
+	light.material.setVector3("color", lightColor);
+	light.draw();
 }
