@@ -2,8 +2,6 @@
 #include <glm\glm.hpp>
 #include <glm\gtc\matrix_transform.hpp>
 
-#include <iostream>
-
 #include "MyApplication.h"
 #include "Time.h"
 #include "Mesh.h"
@@ -18,7 +16,7 @@ void MyApplication::Start()
 	cube.material.shader = shaderCube;
 
 	Mesh mesh;
-	mesh.loadModel("C:\\Users\\UserHp\\Desktop\\snowMan.obj");
+	mesh.loadModel("C:/Users/UserHp/Desktop/snowMan.obj");
 
 	cube.mesh = mesh;
 	cube.init();
@@ -35,6 +33,7 @@ void MyApplication::Update()
 	time += Time::deltaTime * 6.0f;
 
 	glm::mat4 model;
+	model = glm::translate(model, glm::vec3(0, -1.5, 0));
 	model = glm::rotate(model, glm::radians(time * 10.0f), glm::vec3(0, 1, 0));
 	glm::mat4 view;
 	view = glm::lookAt(glm::vec3(0, 0, 6), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));

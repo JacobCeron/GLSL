@@ -104,7 +104,4 @@
     <None Include="src\shaders\simple.vert" />
     <None Include="src\shaders\simple.frag" />
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="src\models\cube.obj" />
-  </ItemGroup>
 </Project>

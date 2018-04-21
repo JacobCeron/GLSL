@@ -3,8 +3,6 @@
 #include <string>
 #include <algorithm>
 
-#include <iostream>
-
 #include "Mesh.h"
 
 Mesh::Mesh()

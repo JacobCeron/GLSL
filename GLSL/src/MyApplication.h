@@ -9,7 +9,6 @@ class MyApplication :
 {
 private:
 	RenderMesh cube;
-	RenderMesh light;
 
 public:
 	virtual void Start();
