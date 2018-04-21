@@ -2,6 +2,7 @@
 
 in vec3 Nor;
 in vec3 FragPos;
+in vec3 col;
 
 uniform vec3 lightColor;
 uniform vec3 lightPos;

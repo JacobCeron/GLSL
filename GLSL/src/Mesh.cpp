@@ -1,6 +1,9 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <algorithm>
+
+#include <iostream>
 
 #include "Mesh.h"
 
@@ -16,65 +19,55 @@ void Mesh::loadModel(const char* fileName)
 	if (!file)
 		return;
 
-	std::stringstream text;
-	text << file.rdbuf();
-	std::string word;
+	std::string line;
 
-	while (text >> word)
+	while (std::getline(file, line))
 	{
-		if (word == "v")
+		if (line.substr(0, 2) == "v ")
 		{
+			std::stringstream text(line.substr(2, line.size()));
 			Vector<float, 3> v;
 			for (size_t i{ 0 }; i < v.size(); i++)
 				text >> v[i];
 			position.push_back(v);
 		}
-		else if (word == "vt")
+		else if (line.substr(0, 3) == "vt ")
 		{
+			std::stringstream text(line.substr(3, line.size()));
 			Vector<float, 2> vt;
 			for (size_t i{ 0 }; i < vt.size(); i++)
 				text >> vt[i];
 			uv.push_back(vt);
 		}
-		else if (word == "vn")
+		else if (line.substr(0, 3) == "vn ")
 		{
+			std::stringstream text(line.substr(3, line.size()));
 			Vector<float, 3> vn;
 			for (size_t i{ 0 }; i < vn.size(); i++)
 				text >> vn[i];
 			normal.push_back(vn);
 		}
-		else if (word == "f")
+		else if (line.substr(0, 2) == "f ")
 		{
-			Vector<unsigned int, 3> iv;
-			Vector<unsigned int, 3> ivt;
-			Vector<unsigned int, 3> ivn;
-			for (size_t i{ 0 }; i < 3; i++)
+			std::stringstream text(line.substr(2, line.size()));
+			std::string word;
+			Vector<unsigned int, 4> iv;
+			size_t count{ 0 };
+			while (text >> word)
 			{
-				text >> word;
-				switch (word.size())
-				{
-				case 1:
-					iv[i] = static_cast<unsigned int>(word[0] - 49);
-					break;
-				case 3:
-					iv[i] = static_cast<unsigned int>(word[0] - 49);
-					ivt[i] = static_cast<unsigned int>(word[2] - 49);
-					break;
-				case 4:
-					iv[i] = static_cast<unsigned int>(word[0] - 49);
-					ivn[i] = static_cast<unsigned int>(word[3] - 49);
-					break;
-				case 5:
-					iv[i] = static_cast<unsigned int>(word[0] - 49);
-					ivt[i] = static_cast<unsigned int>(word[2] - 49);
-					ivn[i] = static_cast<unsigned int>(word[4] - 49);
-					break;
-				}
+				std::stringstream ss(word);
+				ss >> iv[count];
+				iv[count++] -= 1;
 			}
 			indexPosition.push_back(iv);
-			indexUV.push_back(ivt);
-			indexNormal.push_back(ivn);
 		}
+	}
+
+	for (size_t i{ 0 }; i < indexPosition.size(); i++)
+	{
+		unsigned int temp{ indexPosition[i][indexPosition[0].size() - 2] };
+		indexPosition[i][indexPosition[0].size() - 2] = indexPosition[i][indexPosition[0].size() - 1];
+		indexPosition[i][indexPosition[0].size() - 1] = temp;
 	}
 }
 

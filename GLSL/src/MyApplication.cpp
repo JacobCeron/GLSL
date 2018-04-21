@@ -2,6 +2,8 @@
 #include <glm\glm.hpp>
 #include <glm\gtc\matrix_transform.hpp>
 
+#include <iostream>
+
 #include "MyApplication.h"
 #include "Time.h"
 #include "Mesh.h"
@@ -9,27 +11,17 @@
 void MyApplication::Start()
 {
 	Shader shaderCube;
-	shaderCube.compileShader(Shader::readShaderFile("src\\shaders\\cube.vert").c_str(), Shader::VERTEX);
-	shaderCube.compileShader(Shader::readShaderFile("src\\shaders\\cube.frag").c_str(), Shader::FRAGMENT);
+	shaderCube.compileShader(Shader::readShaderFile("src\\shaders\\simple.vert").c_str(), Shader::VERTEX);
+	shaderCube.compileShader(Shader::readShaderFile("src\\shaders\\simple.frag").c_str(), Shader::FRAGMENT);
 	shaderCube.linkProgram();
 
 	cube.material.shader = shaderCube;
 
-	Shader shaderLight;
-	shaderLight.compileShader(Shader::readShaderFile("src\\shaders\\light.vert").c_str(), Shader::VERTEX);
-	shaderLight.compileShader(Shader::readShaderFile("src\\shaders\\light.frag").c_str(), Shader::FRAGMENT);
-	shaderLight.linkProgram();
-
-	light.material.shader = shaderLight;
-
 	Mesh mesh;
-	mesh.loadModel("src\\models\\cube.obj");
+	mesh.loadModel("C:\\Users\\UserHp\\Desktop\\snowMan.obj");
 
 	cube.mesh = mesh;
-	light.mesh = mesh;
-
 	cube.init();
-	light.init();
 
 	glEnable(GL_DEPTH_TEST);
 }
@@ -49,27 +41,9 @@ void MyApplication::Update()
 	glm::mat4 projection;
 	projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
 
-	static glm::vec3 lightPos(1.5f, 1.5f, 1.5f);
-	static glm::vec3 lightColor;
-	lightColor = glm::vec3(sin(time / 6.0f * 2.0f), sin(time / 6.0f) + 0.15, cos(time / 6.0f) + 0.25);
-
 	cube.material.shader.use();
 	cube.material.setMatrix4x4("transforms.model", model);
 	cube.material.setMatrix4x4("transforms.view", view);
 	cube.material.setMatrix4x4("transforms.projection", projection);
-	cube.material.setVector3("color", glm::vec3(1, 1, 1));
-	cube.material.setVector3("lightColor", lightColor);
-	cube.material.setVector3("lightPos", lightPos);
 	cube.draw();
-
-	model = glm::mat4();
-	model = glm::translate(model, lightPos);
-	model = glm::scale(model, glm::vec3(0.25f));
-
-	light.material.shader.use();
-	light.material.setMatrix4x4("transforms.model", model);
-	light.material.setMatrix4x4("transforms.view", view);
-	light.material.setMatrix4x4("transforms.projection", projection);
-	light.material.setVector3("color", lightColor);
-	light.draw();
 }

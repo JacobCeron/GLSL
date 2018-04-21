@@ -101,6 +101,8 @@
     <None Include="src\Vector.inl">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="src\shaders\simple.vert" />
+    <None Include="src\shaders\simple.frag" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\models\cube.obj" />

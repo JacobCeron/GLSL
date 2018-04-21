@@ -18,9 +18,9 @@ void VertexArray::unbind()
 	glBindVertexArray(0);
 }
 
-void VertexArray::addAttrib(unsigned int index, int size, VertexType type, bool normalize)
+void VertexArray::addAttrib(unsigned int index, int size, VertexType type, bool normalize, int stride, const void* offset)
 {
-	glVertexAttribPointer(index, size, type, normalize, 0, nullptr);
+	glVertexAttribPointer(index, size, type, normalize, stride, offset);
 	glEnableVertexAttribArray(index);
 }
 

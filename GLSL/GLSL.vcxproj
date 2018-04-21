@@ -179,6 +179,8 @@
     <None Include="src\shaders\cube.vert" />
     <None Include="src\shaders\light.frag" />
     <None Include="src\shaders\light.vert" />
+    <None Include="src\shaders\simple.frag" />
+    <None Include="src\shaders\simple.vert" />
     <None Include="src\Vector.inl" />
   </ItemGroup>
   <ItemGroup>

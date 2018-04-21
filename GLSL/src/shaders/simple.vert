@@ -13,15 +13,10 @@ struct Transforms
 
 uniform Transforms transforms;
 
-out vec3 Nor;
-out vec3 FragPos;
-
 out vec3 col;
 
 void main()
 {
-	col = vec3(vPos);
-	Nor = mat3(transpose(inverse(transforms.model))) * vNor;
-	FragPos = vec3(transforms.model * vec4(vPos, 1.0f));
-	gl_Position = transforms.projection * transforms.view * vec4(FragPos, 1.0f);
+	col = vec3(vNor);
+	gl_Position = transforms.projection * transforms.view * transforms.model * vec4(vPos, 1.0f);
 }

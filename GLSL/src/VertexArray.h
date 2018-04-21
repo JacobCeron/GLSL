@@ -14,6 +14,6 @@ public:
 	void init();
 	void bind();
 	void unbind();
-	void addAttrib(unsigned int index, int size, VertexType type, bool normalize);
+	void addAttrib(unsigned int index, int size, VertexType type, bool normalize, int stride, const void* offset);
 	~VertexArray();
 };
