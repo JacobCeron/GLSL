@@ -16,7 +16,7 @@ void MyApplication::Start()
 	cube.material.shader = shaderCube;
 
 	Mesh mesh;
-	mesh.loadModel("C:/Users/UserHp/Desktop/cube.obj");
+	mesh.loadModel("C:/Users/UserHp/Desktop/Models/snowMan.obj");
 	cube.mesh = mesh;
 	cube.init();
 
