@@ -17,8 +17,13 @@ void RenderMesh::init()
 	if (!mesh.indexPosition.empty())
 	{
 		size_t iPosSize{ sizeof(mesh.indexPosition[0]) * mesh.indexPosition.size() };
+		size_t iUVSize{ sizeof(mesh.indexUV[0]) * mesh.indexUV.size() };
+		size_t iNorSize{ sizeof(mesh.indexNormal[0]) * mesh.indexNormal.size() };
 
-		m_eB.init(iPosSize, &mesh.indexPosition[0]);
+		m_eB.init(iPosSize + iUVSize + iNorSize, nullptr);
+		m_eB.updateData(0, iPosSize, &mesh.indexPosition[0]);
+		m_eB.updateData(iPosSize, iUVSize, &mesh.indexUV[0]);
+		m_eB.updateData(iPosSize + iUVSize, iNorSize, &mesh.indexNormal[0]);
 	}
 
 	VertexBuffer m_vB;
@@ -45,7 +50,7 @@ void RenderMesh::draw()
 {
 	m_vA.bind();
 	if (!mesh.indexPosition.empty())
-		glDrawElements(GL_TRIANGLE_STRIP, mesh.indexPosition.size() * mesh.indexPosition[0].size(), GL_UNSIGNED_INT, 0);
+			glDrawElements(GL_TRIANGLE_STRIP, mesh.indexPosition.size() * mesh.indexPosition[0].size(), GL_UNSIGNED_INT, 0);
 	else
 		glDrawArrays(GL_TRIANGLES, 0, mesh.position.size());
 	m_vA.unbind();

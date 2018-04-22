@@ -2,7 +2,6 @@
 
 in vec3 Nor;
 in vec3 FragPos;
-in vec3 col;
 
 uniform vec3 lightColor;
 uniform vec3 lightPos;
@@ -17,7 +16,7 @@ void main()
 
 	vec3 norm = normalize(Nor);
 	vec3 light = normalize(lightPos - FragPos);
-	float diffuseFactor = max(dot(light, norm), 0);
+	float diffuseFactor = max(dot(norm, light), 0.0);
 	vec3 diffuse = diffuseFactor * lightColor;
 
 	vec3 result = (ambient + diffuse) * color;

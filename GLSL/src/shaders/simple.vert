@@ -17,6 +17,6 @@ out vec3 col;
 
 void main()
 {
-	col = vec3(vPos);
+	col = vec3(vNor);
 	gl_Position = transforms.projection * transforms.view * transforms.model * vec4(vPos, 1.0f);
 }
