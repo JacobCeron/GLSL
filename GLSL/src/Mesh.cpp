@@ -17,6 +17,15 @@ void Mesh::loadModel(const char* fileName)
 	if (!file)
 		return;
 
+	if (!position.empty())
+		position.clear();
+	if (!uv.empty())
+		uv.clear();
+	if (!normal.empty())
+		normal.clear();
+	if (!index.empty())
+		index.clear();
+
 	std::string line;
 
 	std::vector<Vector<float, 3>> vV;

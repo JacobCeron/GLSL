@@ -2,6 +2,8 @@
 
 #include "RenderMesh.h"
 
+#include <iostream>
+
 RenderMesh::RenderMesh()
 {
 
