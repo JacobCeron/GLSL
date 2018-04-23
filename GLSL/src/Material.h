@@ -12,8 +12,10 @@ public:
 	Material(const Shader& shader);
 	Material(const Material& copy);
 
+	void setFloat(const char* name, float value);
 	void setVector2(const char* name, const glm::vec2& vector);
 	void setVector3(const char* name, const glm::vec3& vector);
 	void setVector4(const char* name, const glm::vec4& vector);
+	void setMatrix3x3(const char* name, const glm::mat3& matrix);
 	void setMatrix4x4(const char* name, const glm::mat4& matrix);
 };

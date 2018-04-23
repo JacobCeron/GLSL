@@ -73,6 +73,11 @@ void Shader::operator()(const char* name, const glm::vec4 & vector)
 	glUniform4fv(glGetUniformLocation(m_programID, name), 1, &vector[0]);
 }
 
+void Shader::operator()(const char* name, const glm::mat3 & matrix)
+{
+	glUniformMatrix3fv(glGetUniformLocation(m_programID, name), 1, GL_FALSE, &matrix[0][0]);
+}
+
 void Shader::operator()(const char* name, const glm::mat4 & matrix)
 {
 	glUniformMatrix4fv(glGetUniformLocation(m_programID, name), 1, GL_FALSE, &matrix[0][0]);

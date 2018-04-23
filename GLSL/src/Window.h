@@ -16,6 +16,7 @@ private:
 public:
 	Window();
 	void init();
+	void initMembers(int width, int height, const char* name);
 	bool createWindow(int width, int height, const char* name);
 	bool initGL();
 	bool closeWindow();

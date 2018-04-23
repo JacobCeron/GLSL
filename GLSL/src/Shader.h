@@ -30,6 +30,7 @@ public:
 	void operator()(const char* name, const glm::vec2& vector);
 	void operator()(const char* name, const glm::vec3& vector);
 	void operator()(const char* name, const glm::vec4& vector);
+	void operator()(const char* name, const glm::mat3& matrix);
 	void operator()(const char* name, const glm::mat4& matrix);
 	static std::string readShaderFile(const std::string& fileName);
 private:

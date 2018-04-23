@@ -15,10 +15,18 @@ void Window::init()
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 }
 
+void Window::initMembers(int width, int height, const char * name)
+{
+	m_width = width;
+	m_height = height;
+	m_name = name;
+}
+
 bool Window::createWindow(int width, int height, const char* name)
 {
 	init();
-	m_window = glfwCreateWindow(width, height, name, nullptr, nullptr);
+	initMembers(width, height, name);
+	m_window = glfwCreateWindow(m_width, m_height, m_name, nullptr, nullptr);
 
 	if (m_window == nullptr)
 		return false;

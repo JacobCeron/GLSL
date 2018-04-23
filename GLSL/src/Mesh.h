@@ -10,9 +10,7 @@ public:
 	std::vector<Vector<float, 2>> uv;
 	std::vector<Vector<float, 3>> normal;
 
-	std::vector<Vector<int, 4>> indexPosition;
-	std::vector<Vector<int, 4>> indexUV;
-	std::vector<Vector<int, 4>> indexNormal;
+	std::vector<Vector<unsigned int, 3>> index;
 
 public:
 	Mesh();

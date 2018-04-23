@@ -1,7 +1,5 @@
 #include <glad\glad.h>
 
-#include <iostream>
-
 #include "RenderMesh.h"
 
 RenderMesh::RenderMesh()
@@ -14,16 +12,10 @@ void RenderMesh::init()
 	m_vA.init();
 
 	ElementBuffer m_eB;
-	if (!mesh.indexPosition.empty())
+	if (!mesh.index.empty())
 	{
-		size_t iPosSize{ sizeof(mesh.indexPosition[0]) * mesh.indexPosition.size() };
-		size_t iUVSize{ sizeof(mesh.indexUV[0]) * mesh.indexUV.size() };
-		size_t iNorSize{ sizeof(mesh.indexNormal[0]) * mesh.indexNormal.size() };
-
-		m_eB.init(iPosSize + iUVSize + iNorSize, nullptr);
-		m_eB.updateData(0, iPosSize, &mesh.indexPosition[0]);
-		m_eB.updateData(iPosSize, iUVSize, &mesh.indexUV[0]);
-		m_eB.updateData(iPosSize + iUVSize, iNorSize, &mesh.indexNormal[0]);
+		size_t iPosSize{ sizeof(mesh.index[0]) * mesh.index.size() };
+		m_eB.init(iPosSize, &mesh.index[0]);
 	}
 
 	VertexBuffer m_vB;
@@ -49,9 +41,6 @@ void RenderMesh::init()
 void RenderMesh::draw()
 {
 	m_vA.bind();
-	if (!mesh.indexPosition.empty())
-			glDrawElements(GL_TRIANGLE_STRIP, mesh.indexPosition.size() * mesh.indexPosition[0].size(), GL_UNSIGNED_INT, 0);
-	else
-		glDrawArrays(GL_TRIANGLES, 0, mesh.position.size());
+	glDrawElements(GL_TRIANGLES, mesh.index.size() * mesh.index[0].size(), GL_UNSIGNED_INT, 0);
 	m_vA.unbind();
 }

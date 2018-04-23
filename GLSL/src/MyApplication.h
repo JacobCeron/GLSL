@@ -8,7 +8,7 @@ class MyApplication :
 	public Application
 {
 private:
-	RenderMesh cube;
+	RenderMesh object;
 
 public:
 	virtual void Start();

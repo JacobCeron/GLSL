@@ -94,14 +94,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\shaders\light.vert" />
-    <None Include="src\shaders\light.frag" />
     <None Include="src\Vector.inl">
       <Filter>Header Files</Filter>
     </None>
     <None Include="src\shaders\simple.frag" />
     <None Include="src\shaders\simple.vert" />
-    <None Include="src\shaders\diffuse.frag" />
-    <None Include="src\shaders\diffuse.vert" />
+    <None Include="src\shaders\Gouraud.vert" />
+    <None Include="src\shaders\Gouraud.frag" />
   </ItemGroup>
 </Project>
