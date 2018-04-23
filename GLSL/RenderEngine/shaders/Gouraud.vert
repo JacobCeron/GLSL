@@ -30,6 +30,8 @@ uniform mat4 ModelViewMatrix;
 uniform mat4 ProjectionMatrix;
 uniform mat4 MVP;
 
+uniform vec3 eye;
+
 void main()
 {
 	vec3 ambient = Light.La * Material.Ka;
@@ -39,9 +41,10 @@ void main()
 	vec3 s = normalize(vec3(Light.LightPosition - eyeCoord));
 	vec3 diffuse = Light.Ld * Material.Kd * max(dot(n, s), 0.0f);
 
+	vec3 eyeC = normalize(vec3(ModelViewMatrix * vec4(eye, 1.0f)));
 	vec3 v = normalize(-eyeCoord.xyz);
 	vec3 r = reflect(-s, n);
-	vec3 specular = Light.Ls * Material.Ks * pow(max(dot(r, n), 0.0f), Material.Shininess);
+	vec3 specular = Light.Ls * Material.Ks * pow(max(dot(r, v), 0.0f), Material.Shininess);
 
 	LightIntensity = ambient + diffuse + specular;
 	gl_Position = MVP * vec4(vPos, 1.0f);

@@ -146,40 +146,46 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Application.cpp" />
-    <ClCompile Include="src\ElementBuffer.cpp" />
-    <ClCompile Include="src\glad.c" />
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Material.cpp" />
-    <ClCompile Include="src\MyApplication.cpp" />
-    <ClCompile Include="src\RenderMesh.cpp" />
-    <ClCompile Include="src\Shader.cpp" />
-    <ClCompile Include="src\Mesh.cpp" />
-    <ClCompile Include="src\Time.cpp" />
-    <ClCompile Include="src\VertexArray.cpp" />
-    <ClCompile Include="src\VertexBuffer.cpp" />
-    <ClCompile Include="src\Window.cpp" />
+    <ClCompile Include="RenderEngine\Classes\Application.cpp" />
+    <ClCompile Include="RenderEngine\Classes\ElementBuffer.cpp" />
+    <ClCompile Include="RenderEngine\Classes\glad.c" />
+    <ClCompile Include="RenderEngine\Classes\Vec2.cpp" />
+    <ClCompile Include="RenderEngine\Classes\Vec3.cpp" />
+    <ClCompile Include="RenderEngine\Classes\Vec4.cpp" />
+    <ClCompile Include="RenderEngine\main.cpp" />
+    <ClCompile Include="RenderEngine\Classes\Material.cpp" />
+    <ClCompile Include="RenderEngine\Classes\MyApplication.cpp" />
+    <ClCompile Include="RenderEngine\Classes\RenderMesh.cpp" />
+    <ClCompile Include="RenderEngine\Classes\Shader.cpp" />
+    <ClCompile Include="RenderEngine\Classes\Mesh.cpp" />
+    <ClCompile Include="RenderEngine\Classes\Time.cpp" />
+    <ClCompile Include="RenderEngine\Classes\VertexArray.cpp" />
+    <ClCompile Include="RenderEngine\Classes\VertexBuffer.cpp" />
+    <ClCompile Include="RenderEngine\Classes\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Application.h" />
-    <ClInclude Include="src\ElementBuffer.h" />
-    <ClInclude Include="src\Material.h" />
-    <ClInclude Include="src\Mesh.h" />
-    <ClInclude Include="src\MyApplication.h" />
-    <ClInclude Include="src\RenderMesh.h" />
-    <ClInclude Include="src\Shader.h" />
-    <ClInclude Include="src\Time.h" />
-    <ClInclude Include="src\Vector.h" />
-    <ClInclude Include="src\VertexArray.h" />
-    <ClInclude Include="src\VertexBuffer.h" />
-    <ClInclude Include="src\Window.h" />
+    <ClInclude Include="RenderEngine\Classes\Application.h" />
+    <ClInclude Include="RenderEngine\Classes\ElementBuffer.h" />
+    <ClInclude Include="RenderEngine\Classes\Material.h" />
+    <ClInclude Include="RenderEngine\Classes\Mesh.h" />
+    <ClInclude Include="RenderEngine\Classes\MyApplication.h" />
+    <ClInclude Include="RenderEngine\Classes\RenderMesh.h" />
+    <ClInclude Include="RenderEngine\Classes\Shader.h" />
+    <ClInclude Include="RenderEngine\Classes\Time.h" />
+    <ClInclude Include="RenderEngine\Classes\Vec2.h" />
+    <ClInclude Include="RenderEngine\Classes\Vec3.h" />
+    <ClInclude Include="RenderEngine\Classes\Vec4.h" />
+    <ClInclude Include="RenderEngine\Classes\Vector.h" />
+    <ClInclude Include="RenderEngine\Classes\VertexArray.h" />
+    <ClInclude Include="RenderEngine\Classes\VertexBuffer.h" />
+    <ClInclude Include="RenderEngine\Classes\Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\shaders\Gouraud.frag" />
-    <None Include="src\shaders\Gouraud.vert" />
-    <None Include="src\shaders\simple.frag" />
-    <None Include="src\shaders\simple.vert" />
-    <None Include="src\Vector.inl" />
+    <None Include="RenderEngine\shaders\Gouraud.frag" />
+    <None Include="RenderEngine\shaders\Gouraud.vert" />
+    <None Include="RenderEngine\shaders\simple.frag" />
+    <None Include="RenderEngine\shaders\simple.vert" />
+    <None Include="RenderEngine\Classes\Vector.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

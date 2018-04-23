@@ -184,3 +184,27 @@ Vector<T, N> operator/(const Vector<T, N>& left, const Vector<T, N>& right)
 		res[i] = left[i] / right[i];
 	return res;
 }
+
+template<typename T, size_t N>
+T Vector<T, N>::magnitud(const Vector<T, N>& v)
+{
+	return T();
+}
+
+template<typename T, size_t N>
+T Vector<T, N>::dot(const Vector<T, N>& left, const Vector<T, N>& right)
+{
+	return T();
+}
+
+template<typename T, size_t N>
+inline Vector<T, N> Vector<T, N>::normalize(const Vector<T, N>& v)
+{
+	return Vector<T, N>();
+}
+
+template<typename T, size_t N>
+inline Vector<T, 3> Vector<T, N>::cross(const Vector<T, 3>& left, const Vector<T, 3>& right)
+{
+	return Vector<T, 3>();
+}
