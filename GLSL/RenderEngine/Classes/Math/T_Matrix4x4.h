@@ -24,7 +24,30 @@ public:
 	const T_Vector4<T>& operator[](size_t index) const;
 
 	template<typename T>
+	friend T_Matrix4x4<T> operator+(T left, const T_Matrix4x4<T>& right);
+	template<typename T>
+	friend T_Matrix4x4<T> operator+(const T_Matrix4x4<T>& left, const T_Matrix4x4<T>& right);
+
+	template<typename T>
+	friend T_Matrix4x4<T> operator-(T left, const T_Matrix4x4<T>& right);
+	template<typename T>
+	friend T_Matrix4x4<T> operator-(const T_Matrix4x4<T>& left, const T_Matrix4x4<T>& right);
+
+	template<typename T>
+	friend T_Matrix4x4<T> operator*(T left, const T_Matrix4x4<T>& right);
+	template<typename T>
+	friend T_Matrix4x4<T> operator*(const T_Matrix4x4<T>& left, const T_Matrix4x4<T>& right);
+
+	template<typename T>
+	friend T_Matrix4x4<T> operator/(T left, const T_Matrix4x4<T>& right);
+	template<typename T>
+	friend T_Matrix4x4<T> operator/(const T_Matrix4x4<T>& left, const T_Matrix4x4<T>& right);
+
+	template<typename T>
 	friend std::ostream& operator<<(std::ostream& ost, const T_Matrix4x4<T>& matrix);
+
+	static T_Matrix4x4<T> translate(const T_Matrix4x4<T>& matrix, const T_Vector3<T>& vector);
+	static T_Matrix4x4<T> scale(const T_Matrix4x4<T>& matrix, const T_Vector3<T>& vector);
 };
 
 #endif
