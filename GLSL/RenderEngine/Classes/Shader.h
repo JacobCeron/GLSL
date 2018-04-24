@@ -4,6 +4,8 @@
 #include <array>
 #include <glm\glm.hpp>
 
+#include "Maths.h"
+
 class Shader
 {
 public:
@@ -32,6 +34,15 @@ public:
 	void operator()(const char* name, const glm::vec4& vector);
 	void operator()(const char* name, const glm::mat3& matrix);
 	void operator()(const char* name, const glm::mat4& matrix);
+
+	/**************************************************************************************************/
+	void operator()(const char* name, const Vector2& vector);
+	void operator()(const char* name, const Vector3& vector);
+	void operator()(const char* name, const Vector4& vector);
+	void operator()(const char* name, const Matrix3x3& matrix);
+	void operator()(const char* name, const Matrix4x4& matrix);
+	/**************************************************************************************************/
+
 	static std::string readShaderFile(const std::string& fileName);
 private:
 	void error(unsigned int shader, ShaderType type = static_cast<ShaderType>(-1));

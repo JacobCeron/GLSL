@@ -7,13 +7,13 @@
 void MyApplication::Start()
 {
 	Shader shaderObj;
-	shaderObj.compileShader(Shader::readShaderFile("RenderEngine\\shaders\\Gouraud.vert").c_str(), Shader::VERTEX);
-	shaderObj.compileShader(Shader::readShaderFile("RenderEngine\\shaders\\Gouraud.frag").c_str(), Shader::FRAGMENT);
+	shaderObj.compileShader(Shader::readShaderFile("RenderEngine\\shaders\\test.vert").c_str(), Shader::VERTEX);
+	shaderObj.compileShader(Shader::readShaderFile("RenderEngine\\shaders\\test.frag").c_str(), Shader::FRAGMENT);
 	shaderObj.linkProgram();
 
 	Mesh mesh;
 	
-	cube.material.shader = shaderObj;
+	/*cube.material.shader = shaderObj;
 	mesh.loadModel("C:/Users/UserHp/Desktop/Models/cube.obj");
 	cube.mesh = mesh;
 	cube.init();
@@ -21,17 +21,17 @@ void MyApplication::Start()
 	sphere.material.shader = shaderObj;
 	mesh.loadModel("C:/Users/UserHp/Desktop/Models/sphere.obj");
 	sphere.mesh = mesh;
-	sphere.init();
+	sphere.init();*/
 
 	torus.material.shader = shaderObj;
 	mesh.loadModel("C:/Users/UserHp/Desktop/Models/torus.obj");
 	torus.mesh = mesh;
 	torus.init();
 
-	heart.material.shader = shaderObj;
+	/*heart.material.shader = shaderObj;
 	mesh.loadModel("C:/Users/UserHp/Desktop/Models/heart.obj");
 	heart.mesh = mesh;
-	heart.init();
+	heart.init();*/
 	
 	glEnable(GL_DEPTH_TEST);
 }
@@ -56,7 +56,7 @@ void MyApplication::Update()
 	static glm::vec3 lightPos(1.5f, 1.5f, 1.5f);
 	lightPos.x = cos(time / 6) * 10;
 
-	cube.material.shader.use();
+	/*cube.material.shader.use();
 	cube.material.setMatrix3x3("NormalMatrix", glm::mat3(glm::transpose(glm::inverse(ModelViewMatrix))));
 	cube.material.setMatrix4x4("ModelViewMatrix", ModelViewMatrix);
 	cube.material.setMatrix4x4("ProjectionMatrix", ProjectionMatrix);
@@ -90,15 +90,21 @@ void MyApplication::Update()
 	sphere.material.setVector3("Material.Ks", glm::vec3(1, 0.3, 0.5));
 	sphere.material.setFloat("Material.Shininess", 32);
 	sphere.material.setVector3("eye", glm::vec3(0, 0, 10));
-	sphere.draw();
+	sphere.draw();*/
 
 	model = glm::mat4();
-	model = glm::translate(model, glm::vec3(1.5, 0, 0));
+	//model = glm::translate(model, glm::vec3(1.5, 0, 0));
 	model = glm::rotate(model, glm::radians(time * 10.0f), glm::vec3(1, 1, 0));
-	ModelViewMatrix = view * model;
+	//ModelViewMatrix = view * model;
+
+	Matrix4x4 m;
+	m = Matrix4x4::rotate(m, radians(time * 10.0f), Vector3(1, 0, 0));
 
 	torus.material.shader.use();
-	torus.material.setMatrix3x3("NormalMatrix", glm::mat3(glm::transpose(glm::inverse(ModelViewMatrix))));
+	torus.material.setMatrix4x4("model", m);
+	torus.material.setMatrix4x4("view", view);
+	torus.material.setMatrix4x4("projection", ProjectionMatrix);
+	/*torus.material.setMatrix3x3("NormalMatrix", glm::mat3(glm::transpose(glm::inverse(ModelViewMatrix))));
 	torus.material.setMatrix4x4("ModelViewMatrix", ModelViewMatrix);
 	torus.material.setMatrix4x4("ProjectionMatrix", ProjectionMatrix);
 	torus.material.setMatrix4x4("MVP", ProjectionMatrix * ModelViewMatrix);
@@ -109,10 +115,10 @@ void MyApplication::Update()
 	torus.material.setVector3("Material.Kd", glm::vec3(0.2, 0.66, 0.96));
 	torus.material.setVector3("Light.Ls", glm::vec3(1, 1, 1));
 	torus.material.setVector3("Material.Ks", glm::vec3(1, 0.3, 0.5));
-	torus.material.setFloat("Material.Shininess", 32);
+	torus.material.setFloat("Material.Shininess", 32);*/
 	torus.draw();
 
-	model = glm::mat4();
+	/*model = glm::mat4();
 	model = glm::translate(model, glm::vec3(4, 0, 0));
 	model = glm::rotate(model, glm::radians(time * 10.0f), glm::vec3(1, 1, 0));
 	ModelViewMatrix = view * model;
@@ -130,7 +136,7 @@ void MyApplication::Update()
 	heart.material.setVector3("Light.Ls", glm::vec3(1, 1, 1));
 	heart.material.setVector3("Material.Ks", glm::vec3(1, 0.3, 0.5));
 	heart.material.setFloat("Material.Shininess", 32);
-	heart.draw();
+	heart.draw();*/
 
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 }

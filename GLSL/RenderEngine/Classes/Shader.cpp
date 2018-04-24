@@ -83,6 +83,33 @@ void Shader::operator()(const char* name, const glm::mat4 & matrix)
 	glUniformMatrix4fv(glGetUniformLocation(m_programID, name), 1, GL_FALSE, &matrix[0][0]);
 }
 
+/**************************************************************************************************/
+void Shader::operator()(const char* name, const Vector2 & vector)
+{
+	glUniform2fv(glGetUniformLocation(m_programID, name), 1, &vector[0]);
+}
+
+void Shader::operator()(const char* name, const Vector3 & vector)
+{
+	glUniform3fv(glGetUniformLocation(m_programID, name), 1, &vector[0]);
+}
+
+void Shader::operator()(const char* name, const Vector4 & vector)
+{
+	glUniform4fv(glGetUniformLocation(m_programID, name), 1, &vector[0]);
+}
+
+void Shader::operator()(const char* name, const Matrix3x3 & matrix)
+{
+	glUniformMatrix3fv(glGetUniformLocation(m_programID, name), 1, GL_FALSE, &matrix[0][0]);
+}
+
+void Shader::operator()(const char* name, const Matrix4x4 & matrix)
+{
+	glUniformMatrix4fv(glGetUniformLocation(m_programID, name), 1, GL_FALSE, &matrix[0][0]);
+}
+/**************************************************************************************************/
+
 void Shader::error(unsigned int shader, ShaderType type)
 {
 	int success;

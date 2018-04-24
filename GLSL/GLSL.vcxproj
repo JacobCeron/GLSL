@@ -149,6 +149,7 @@
     <ClCompile Include="RenderEngine\Classes\Application.cpp" />
     <ClCompile Include="RenderEngine\Classes\ElementBuffer.cpp" />
     <ClCompile Include="RenderEngine\Classes\glad.c" />
+    <ClCompile Include="RenderEngine\Classes\Maths.cpp" />
     <ClCompile Include="RenderEngine\Classes\Math\T_Vector2.inl" />
     <ClCompile Include="RenderEngine\Classes\Math\T_Vector3.inl" />
     <ClCompile Include="RenderEngine\Classes\Math\T_Vector4.inl" />
@@ -191,6 +192,8 @@
     <None Include="RenderEngine\shaders\simple.frag" />
     <None Include="RenderEngine\shaders\simple.vert" />
     <None Include="RenderEngine\Classes\Vector.inl" />
+    <None Include="RenderEngine\shaders\test.frag" />
+    <None Include="RenderEngine\shaders\test.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

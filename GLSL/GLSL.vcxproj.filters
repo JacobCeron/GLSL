@@ -63,6 +63,9 @@
     <ClCompile Include="RenderEngine\Classes\Math\T_Vector4.inl">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RenderEngine\Classes\Maths.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RenderEngine\Classes\Application.h">
@@ -134,5 +137,7 @@
     <None Include="RenderEngine\Classes\Math\T_Matrix3x3.inl">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="RenderEngine\shaders\test.vert" />
+    <None Include="RenderEngine\shaders\test.frag" />
   </ItemGroup>
 </Project>
