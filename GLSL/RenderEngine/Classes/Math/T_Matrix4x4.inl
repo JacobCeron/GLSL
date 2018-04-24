@@ -43,4 +43,12 @@ const T_Vector4<T>& T_Matrix4x4<T>::operator[](size_t index) const
 	return data[index];
 }
 
+template<typename T>
+std::ostream& operator<<(std::ostream& ost, const T_Matrix4x4<T>& matrix)
+{
+	for (size_t i{ 0 }; i < T_Matrix4x4<T>::rows; i++)
+		ost << matrix[i] << "\n";
+	return ost;
+}
+
 #endif
