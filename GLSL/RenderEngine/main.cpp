@@ -1,11 +1,14 @@
 #include "Classes\MyApplication.h"
 
+#include "Classes\Math\T_Matrix4x4.h"
+
 #include <iostream>
 
 int main()
 {
-	MyApplication app;
-	app.run(app);
+	system("PAUSE");
+	/*MyApplication app;
+	app.run(app);*/
 
 	return 0;
 }

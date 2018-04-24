@@ -101,9 +101,6 @@
     <ClInclude Include="RenderEngine\Classes\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RenderEngine\Classes\Matrix4x4.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="RenderEngine\Classes\Math\T_Vector2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -116,6 +113,9 @@
     <ClInclude Include="RenderEngine\Classes\Math\T_Vector4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RenderEngine\Classes\Math\T_Matrix4x4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="RenderEngine\Classes\Vector.inl">
@@ -125,5 +125,8 @@
     <None Include="RenderEngine\shaders\Gouraud.vert" />
     <None Include="RenderEngine\shaders\simple.frag" />
     <None Include="RenderEngine\shaders\simple.vert" />
+    <None Include="RenderEngine\Classes\Math\T_Matrix4x4.inl">
+      <Filter>Header Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
