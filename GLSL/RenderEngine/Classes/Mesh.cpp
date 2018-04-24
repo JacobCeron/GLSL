@@ -3,6 +3,8 @@
 #include <string>
 #include <algorithm>
 
+#include <iostream>
+
 #include "Mesh.h"
 
 Mesh::Mesh()
@@ -28,13 +30,13 @@ void Mesh::loadModel(const char* fileName)
 
 	std::string line;
 
-	std::vector<Vector<float, 3>> vV;
-	std::vector<Vector<float, 2>> vVT;
-	std::vector<Vector<float, 3>> vVN;
+	std::vector<Vector3> vV;
+	std::vector<Vector2> vVT;
+	std::vector<Vector3> vVN;
 
-	std::vector<Vector<unsigned int, 4>> indexPosition;
-	std::vector<Vector<unsigned int, 4>> indexUV;
-	std::vector<Vector<unsigned int, 4>> indexNormal;
+	std::vector<Vector4ui> indexPosition;
+	std::vector<Vector4ui> indexUV;
+	std::vector<Vector4ui> indexNormal;
 
 	while (std::getline(file, line))
 	{
@@ -45,24 +47,24 @@ void Mesh::loadModel(const char* fileName)
 		else if (line.substr(0, 2) == "v ")
 		{
 			std::stringstream text(line.substr(2, line.size()));
-			Vector<float, 3> v;
-			for (size_t i{ 0 }; i < v.size(); i++)
+			Vector3 v;
+			for (size_t i{ 0 }; i < Vector3::size; i++)
 				text >> v[i];
 			vV.push_back(v);
 		}
 		else if (line.substr(0, 3) == "vt ")
 		{
 			std::stringstream text(line.substr(3, line.size()));
-			Vector<float, 2> vt;
-			for (size_t i{ 0 }; i < vt.size(); i++)
+			Vector2 vt;
+			for (size_t i{ 0 }; i < Vector2::size; i++)
 				text >> vt[i];
 			vVT.push_back(vt);
 		}
 		else if (line.substr(0, 3) == "vn ")
 		{
 			std::stringstream text(line.substr(3, line.size()));
-			Vector<float, 3> vn;
-			for (size_t i{ 0 }; i < vn.size(); i++)
+			Vector3 vn;
+			for (size_t i{ 0 }; i < Vector3::size; i++)
 				text >> vn[i];
 			vVN.push_back(vn);
 		}
@@ -70,9 +72,9 @@ void Mesh::loadModel(const char* fileName)
 		{
 			std::stringstream text(line.substr(2, line.size()));
 			std::string word;
-			Vector<unsigned int, 4> iv;
-			Vector<unsigned int, 4> ivt;
-			Vector<unsigned int, 4> ivn;
+			Vector4ui iv;
+			Vector4ui ivt;
+			Vector4ui ivn;
 			size_t count{ 0 };
 			while (text >> word)
 			{
@@ -93,30 +95,30 @@ void Mesh::loadModel(const char* fileName)
 	}
 
 	for (size_t i{ 0 }; i < indexPosition.size(); i++)
-		for (size_t j{ 0 }; j < indexPosition[0].size(); j++)
+		for (size_t j{ 0 }; j < Vector4ui::size; j++)
 			position.push_back(vV[indexPosition[i][j]]);
 
 	for (size_t i{ 0 }; i < indexUV.size(); i++)
-		for (size_t j{ 0 }; j < indexUV[0].size(); j++)
+		for (size_t j{ 0 }; j < Vector4ui::size; j++)
 			uv.push_back(vVT[indexUV[i][j]]);
 
 	for (size_t i{ 0 }; i < indexNormal.size(); i++)
-		for (size_t j{ 0 }; j < indexNormal[0].size(); j++)
+		for (size_t j{ 0 }; j < Vector4ui::size; j++)
 			normal.push_back(vVN[indexNormal[i][j]]);
 
 	size_t j{ 0 };
 	for (size_t i{ 0 }; i < indexPosition.size(); i++)
 	{
-		Vector<unsigned int, 3> iPos;
+		Vector3ui iPos;
 		size_t count{ 0 };
-		size_t size{ j + iPos.size() };
+		size_t size{ j + Vector3ui::size };
 		for (; j < size; j++)
 			iPos[count++] = j;
 		j -= 1;
 		index.push_back(iPos);
 
 		count = 0;
-		size = j + iPos.size();
+		size = j + Vector3ui::size;
 		for (; j < size; j++)
 		{
 			if (j == size - 1)

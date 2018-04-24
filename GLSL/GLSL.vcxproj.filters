@@ -54,13 +54,13 @@
     <ClCompile Include="RenderEngine\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RenderEngine\Classes\Vec2.cpp">
+    <ClCompile Include="RenderEngine\Classes\Math\T_Vector2.inl">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RenderEngine\Classes\Vec3.cpp">
+    <ClCompile Include="RenderEngine\Classes\Math\T_Vector3.inl">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RenderEngine\Classes\Vec4.cpp">
+    <ClCompile Include="RenderEngine\Classes\Math\T_Vector4.inl">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -101,13 +101,19 @@
     <ClInclude Include="RenderEngine\Classes\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RenderEngine\Classes\Vec2.h">
+    <ClInclude Include="RenderEngine\Classes\Matrix4x4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RenderEngine\Classes\Vec3.h">
+    <ClInclude Include="RenderEngine\Classes\Math\T_Vector2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RenderEngine\Classes\Vec4.h">
+    <ClInclude Include="RenderEngine\Classes\Maths.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderEngine\Classes\Math\T_Vector3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderEngine\Classes\Math\T_Vector4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

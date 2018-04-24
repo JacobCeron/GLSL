@@ -43,6 +43,6 @@ void RenderMesh::init()
 void RenderMesh::draw()
 {
 	m_vA.bind();
-	glDrawElements(GL_TRIANGLES, mesh.index.size() * mesh.index[0].size(), GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, mesh.index.size() * Vector3ui::size, GL_UNSIGNED_INT, 0);
 	m_vA.unbind();
 }

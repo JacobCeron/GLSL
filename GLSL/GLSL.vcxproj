@@ -149,9 +149,9 @@
     <ClCompile Include="RenderEngine\Classes\Application.cpp" />
     <ClCompile Include="RenderEngine\Classes\ElementBuffer.cpp" />
     <ClCompile Include="RenderEngine\Classes\glad.c" />
-    <ClCompile Include="RenderEngine\Classes\Vec2.cpp" />
-    <ClCompile Include="RenderEngine\Classes\Vec3.cpp" />
-    <ClCompile Include="RenderEngine\Classes\Vec4.cpp" />
+    <ClCompile Include="RenderEngine\Classes\Math\T_Vector2.inl" />
+    <ClCompile Include="RenderEngine\Classes\Math\T_Vector3.inl" />
+    <ClCompile Include="RenderEngine\Classes\Math\T_Vector4.inl" />
     <ClCompile Include="RenderEngine\main.cpp" />
     <ClCompile Include="RenderEngine\Classes\Material.cpp" />
     <ClCompile Include="RenderEngine\Classes\MyApplication.cpp" />
@@ -166,15 +166,17 @@
   <ItemGroup>
     <ClInclude Include="RenderEngine\Classes\Application.h" />
     <ClInclude Include="RenderEngine\Classes\ElementBuffer.h" />
+    <ClInclude Include="RenderEngine\Classes\Matrix4x4.h" />
     <ClInclude Include="RenderEngine\Classes\Material.h" />
     <ClInclude Include="RenderEngine\Classes\Mesh.h" />
     <ClInclude Include="RenderEngine\Classes\MyApplication.h" />
     <ClInclude Include="RenderEngine\Classes\RenderMesh.h" />
     <ClInclude Include="RenderEngine\Classes\Shader.h" />
     <ClInclude Include="RenderEngine\Classes\Time.h" />
-    <ClInclude Include="RenderEngine\Classes\Vec2.h" />
-    <ClInclude Include="RenderEngine\Classes\Vec3.h" />
-    <ClInclude Include="RenderEngine\Classes\Vec4.h" />
+    <ClInclude Include="RenderEngine\Classes\Math\T_Vector2.h" />
+    <ClInclude Include="RenderEngine\Classes\Maths.h" />
+    <ClInclude Include="RenderEngine\Classes\Math\T_Vector3.h" />
+    <ClInclude Include="RenderEngine\Classes\Math\T_Vector4.h" />
     <ClInclude Include="RenderEngine\Classes\Vector.h" />
     <ClInclude Include="RenderEngine\Classes\VertexArray.h" />
     <ClInclude Include="RenderEngine\Classes\VertexBuffer.h" />

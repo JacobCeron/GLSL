@@ -1,6 +1,5 @@
 #include "Classes\MyApplication.h"
 
-#include "Classes\Vec3.h"
 #include <iostream>
 
 int main()
