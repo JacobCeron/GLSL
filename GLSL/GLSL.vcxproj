@@ -166,6 +166,7 @@
   <ItemGroup>
     <ClInclude Include="RenderEngine\Classes\Application.h" />
     <ClInclude Include="RenderEngine\Classes\ElementBuffer.h" />
+    <ClInclude Include="RenderEngine\Classes\Math\T_Matrix3x3.h" />
     <ClInclude Include="RenderEngine\Classes\Math\T_Matrix4x4.h" />
     <ClInclude Include="RenderEngine\Classes\Material.h" />
     <ClInclude Include="RenderEngine\Classes\Mesh.h" />
@@ -183,6 +184,7 @@
     <ClInclude Include="RenderEngine\Classes\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="RenderEngine\Classes\Math\T_Matrix3x3.inl" />
     <None Include="RenderEngine\Classes\Math\T_Matrix4x4.inl" />
     <None Include="RenderEngine\shaders\Gouraud.frag" />
     <None Include="RenderEngine\shaders\Gouraud.vert" />

@@ -127,9 +127,9 @@ template<typename T>
 T_Matrix4x4<T> T_Matrix4x4<T>::translate(const T_Matrix4x4<T>& matrix, const T_Vector3<T>& vector)
 {
 	T_Matrix4x4<T> R(matrix);
-	R[3].x = vector.x;
-	R[3].y = vector.y;
-	R[3].z = vector.z;
+	R[3].x += vector.x;
+	R[3].y += vector.y;
+	R[3].z += vector.z;
 	return R;
 }
 
