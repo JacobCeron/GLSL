@@ -153,9 +153,9 @@
     <ClCompile Include="RenderEngine\Classes\Math\T_Vector2.inl" />
     <ClCompile Include="RenderEngine\Classes\Math\T_Vector3.inl" />
     <ClCompile Include="RenderEngine\Classes\Math\T_Vector4.inl" />
-    <ClCompile Include="RenderEngine\main.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="RenderEngine\Classes\Material.cpp" />
-    <ClCompile Include="RenderEngine\Classes\MyApplication.cpp" />
+    <ClCompile Include="MyApplication.cpp" />
     <ClCompile Include="RenderEngine\Classes\RenderMesh.cpp" />
     <ClCompile Include="RenderEngine\Classes\Shader.cpp" />
     <ClCompile Include="RenderEngine\Classes\Mesh.cpp" />
@@ -171,7 +171,7 @@
     <ClInclude Include="RenderEngine\Classes\Math\T_Matrix4x4.h" />
     <ClInclude Include="RenderEngine\Classes\Material.h" />
     <ClInclude Include="RenderEngine\Classes\Mesh.h" />
-    <ClInclude Include="RenderEngine\Classes\MyApplication.h" />
+    <ClInclude Include="MyApplication.h" />
     <ClInclude Include="RenderEngine\Classes\RenderMesh.h" />
     <ClInclude Include="RenderEngine\Classes\Shader.h" />
     <ClInclude Include="RenderEngine\Classes\Time.h" />
@@ -187,13 +187,13 @@
   <ItemGroup>
     <None Include="RenderEngine\Classes\Math\T_Matrix3x3.inl" />
     <None Include="RenderEngine\Classes\Math\T_Matrix4x4.inl" />
-    <None Include="RenderEngine\shaders\Phong-per-vertex.frag" />
-    <None Include="RenderEngine\shaders\Phong-per-vertex.vert" />
-    <None Include="RenderEngine\shaders\simple.frag" />
-    <None Include="RenderEngine\shaders\simple.vert" />
+    <None Include="shaders\Phong-per-vertex.frag" />
+    <None Include="shaders\Phong-per-vertex.vert" />
+    <None Include="shaders\simple.frag" />
+    <None Include="shaders\simple.vert" />
     <None Include="RenderEngine\Classes\Vector.inl" />
-    <None Include="RenderEngine\shaders\test.frag" />
-    <None Include="RenderEngine\shaders\test.vert" />
+    <None Include="shaders\test.frag" />
+    <None Include="shaders\test.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

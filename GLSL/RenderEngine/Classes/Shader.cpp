@@ -5,33 +5,15 @@
 
 #include "Shader.h"
 
+#include <iostream>
+
 Shader::Shader()
 {
 }
 
 void Shader::compileShader(const char* shaderSource, ShaderType type)
 {
-	switch (type)
-	{
-	case VERTEX:
-		m_shader[type] = glCreateShader(GL_VERTEX_SHADER);
-		break;
-	case TESS_CONTROL:
-		m_shader[type] = glCreateShader(GL_TESS_CONTROL_SHADER);
-		break;
-	case TESS_EVALUATION:
-		m_shader[type] = glCreateShader(GL_TESS_EVALUATION_SHADER);
-		break;
-	case GEOMETRY:
-		m_shader[type] = glCreateShader(GL_GEOMETRY_SHADER);
-		break;
-	case FRAGMENT:
-		m_shader[type] = glCreateShader(GL_FRAGMENT_SHADER);
-		break;
-	case COMPUTE:
-		m_shader[type] = glCreateShader(GL_COMPUTE_SHADER);
-		break;
-	}
+	m_shader[type] = glCreateShader(chooseType(type));
 	glShaderSource(m_shader[type], 1, &shaderSource, nullptr);
 	glCompileShader(m_shader[type]);
 	error(m_shader[type], type);
@@ -53,34 +35,80 @@ void Shader::use()
 	glUseProgram(m_programID);
 }
 
+const unsigned int Shader::id() const
+{
+	return m_programID;
+}
+
 void Shader::operator()(const char* name, float value)
 {
-	glUniform1f(glGetUniformLocation(m_programID, name), value);
+	glUniform1f(glGetUniformLocation(id(), name), value);
+}
+
+void Shader::operator()(unsigned int name, float value)
+{
+	glUniform1f(name, value);
 }
 
 void Shader::operator()(const char* name, const Vector2 & vector)
 {
-	glUniform2fv(glGetUniformLocation(m_programID, name), 1, &vector[0]);
+	glUniform2fv(glGetUniformLocation(id(), name), 1, &vector[0]);
+}
+
+void Shader::operator()(unsigned int name, const Vector2 & vector)
+{
+	glUniform2fv(name, 1, &vector[0]);
 }
 
 void Shader::operator()(const char* name, const Vector3 & vector)
 {
-	glUniform3fv(glGetUniformLocation(m_programID, name), 1, &vector[0]);
+	glUniform3fv(glGetUniformLocation(id(), name), 1, &vector[0]);
+}
+
+void Shader::operator()(unsigned int name, const Vector3 & vector)
+{
+	glUniform3fv(name, 1, &vector[0]);
 }
 
 void Shader::operator()(const char* name, const Vector4 & vector)
 {
-	glUniform4fv(glGetUniformLocation(m_programID, name), 1, &vector[0]);
+	glUniform4fv(glGetUniformLocation(id(), name), 1, &vector[0]);
+}
+
+void Shader::operator()(unsigned int name, const Vector4 & vector)
+{
+	glUniform4fv(name, 1, &vector[0]);
 }
 
 void Shader::operator()(const char* name, const Matrix3x3 & matrix)
 {
-	glUniformMatrix3fv(glGetUniformLocation(m_programID, name), 1, GL_FALSE, &matrix[0][0]);
+	glUniformMatrix3fv(glGetUniformLocation(id(), name), 1, GL_FALSE, &matrix[0][0]);
+}
+
+void Shader::operator()(unsigned int name, const Matrix3x3 & matrix)
+{
+	glUniformMatrix3fv(name, 1, GL_FALSE, &matrix[0][0]);
 }
 
 void Shader::operator()(const char* name, const Matrix4x4 & matrix)
 {
-	glUniformMatrix4fv(glGetUniformLocation(m_programID, name), 1, GL_FALSE, &matrix[0][0]);
+	glUniformMatrix4fv(glGetUniformLocation(id(), name), 1, GL_FALSE, &matrix[0][0]);
+}
+
+void Shader::operator()(unsigned int name, const Matrix4x4 & matrix)
+{
+	glUniformMatrix4fv(name, 1, GL_FALSE, &matrix[0][0]);
+}
+
+void Shader::operator()(const char* name, ShaderType type)
+{
+	int shaderType{ chooseType(type) };
+
+	// NOT USING LOCATION OF SUBROUTINE
+	// int locationOfSubroutine{ glGetSubroutineUniformLocation(id(), shaderType, nameSubroutine) };
+
+	unsigned int indexSubroutine{ glGetSubroutineIndex(id(), shaderType, name) };
+	glUniformSubroutinesuiv(shaderType, 1, &indexSubroutine);
 }
 
 void Shader::error(unsigned int shader, ShaderType type)
@@ -108,6 +136,31 @@ void Shader::error(unsigned int shader, ShaderType type)
 			glGetProgramInfoLog(shader, 512, nullptr, infoLog);
 			std::cout << "SHADER_PROGRAM_ERROR:\n" << infoLog << std::endl;
 		}
+		break;
+	}
+}
+
+int Shader::chooseType(ShaderType type)
+{
+	switch (type)
+	{
+	case Shader::VERTEX:
+		return GL_VERTEX_SHADER;
+		break;
+	case Shader::TESS_CONTROL:
+		return GL_TESS_CONTROL_SHADER;
+		break;
+	case Shader::TESS_EVALUATION:
+		return GL_TESS_EVALUATION_SHADER;
+		break;
+	case Shader::GEOMETRY:
+		return GL_GEOMETRY_SHADER;
+		break;
+	case Shader::FRAGMENT:
+		return GL_FRAGMENT_SHADER;
+		break;
+	case Shader::COMPUTE:
+		return GL_COMPUTE_SHADER;
 		break;
 	}
 }

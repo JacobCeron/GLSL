@@ -63,7 +63,7 @@ public:
 	static T_Matrix4x4<T> scale(const T_Matrix4x4<T>& matrix, const T_Vector3<T>& vector);
 	static T_Matrix4x4<T> rotate(const T_Matrix4x4<T>& matrix, float angle, const T_Vector3<T>& axis);
 	static T_Matrix4x4<T> lookAt(const T_Vector3<T>& eye, const T_Vector3<T>& target, const T_Vector3<T>& up);
-	static T_Matrix4x4<T> ortho(T left, T right, T bottom, T top, T near, T far);
+	static T_Matrix4x4<T> ortho(T left, T right, T bottom, T top, T front, T back);
 };
 
 #endif

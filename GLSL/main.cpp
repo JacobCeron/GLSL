@@ -1,4 +1,4 @@
-#include "Classes\MyApplication.h"
+#include "MyApplication.h"
 
 int main()
 {

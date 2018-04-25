@@ -263,15 +263,15 @@ T_Matrix4x4<T> T_Matrix4x4<T>::lookAt(const T_Vector3<T>& eye, const T_Vector3<T
 }
 
 template<typename T>
-T_Matrix4x4<T> T_Matrix4x4<T>::ortho(T left, T right, T bottom, T top, T near, T far)
+T_Matrix4x4<T> T_Matrix4x4<T>::ortho(T left, T right, T bottom, T top, T front, T back)
 {
 	T_Matrix4x4<T> Result;
 	Result[0][0] = 2.0f / (right - left);
 	Result[1][1] = 2.0f / (top - bottom);
-	Result[2][2] = 2.0f / (near - far);
+	Result[2][2] = 2.0f / (front - back);
 	Result[3][0] = -(right + left) / (right - left);
 	Result[3][1] = -(top + bottom) / (top - bottom);
-	Result[3][2] = -(far + near) / (far - near);
+	Result[3][2] = -(back + front) / (back - front);
 
 	return Result;
 }

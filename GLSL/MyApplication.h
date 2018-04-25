@@ -1,8 +1,7 @@
 #pragma once
 
-#include "Application.h"
-
-#include "RenderMesh.h"
+#include "RenderEngine/Classes/Application.h"
+#include "RenderEngine/Classes/RenderMesh.h"
 
 class MyApplication :
 	public Application
