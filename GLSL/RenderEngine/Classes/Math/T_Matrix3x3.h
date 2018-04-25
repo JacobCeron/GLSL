@@ -5,7 +5,10 @@
 #include <ostream>
 
 #include "T_Vector3.h"
-#include "T_Vector3.h"
+#include "T_Vector4.h"
+
+template<typename T>
+struct T_Matrix4x4;
 
 template<typename T>
 struct T_Matrix3x3
@@ -19,6 +22,7 @@ private:
 public:
 	T_Matrix3x3();
 	T_Matrix3x3(const T_Vector3<T>& v1, const T_Vector3<T>& v2, const T_Vector3<T>& v3);
+	T_Matrix3x3(const T_Matrix4x4<T>& matrix);
 	T_Matrix3x3(const T_Matrix3x3<T>& copy);
 
 	const T_Matrix3x3<T>& operator=(const T_Matrix3x3<T>& matrix);

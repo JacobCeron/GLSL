@@ -2,6 +2,8 @@
 
 #include <cassert>
 
+#include "T_Matrix4x4.h"
+
 template<typename T>
 size_t T_Matrix3x3<T>::rows{ 3 };
 
@@ -21,11 +23,14 @@ T_Matrix3x3<T>::T_Matrix3x3(const T_Vector3<T>& v1, const T_Vector3<T>& v2, cons
 }
 
 template<typename T>
+T_Matrix3x3<T>::T_Matrix3x3(const T_Matrix4x4<T>& matrix)
+	: T_Matrix3x3(matrix[0], matrix[1], matrix[2])
+{}
+
+template<typename T>
 T_Matrix3x3<T>::T_Matrix3x3(const T_Matrix3x3<T>& copy)
-{
-	for (size_t i{ 0 }; i < rows; i++)
-		data[i] = copy[i];
-}
+	: T_Matrix3x3(copy[0], copy[1], copy[2])
+{}
 
 template<typename T>
 const T_Matrix3x3<T>& T_Matrix3x3<T>::operator=(const T_Matrix3x3<T>& matrix)
@@ -161,10 +166,10 @@ T_Matrix3x3<T> T_Matrix3x3<T>::transpose(const T_Matrix3x3<T>& matrix)
 {
 	return T_Matrix3x3<T>
 		(
-			T_Vector3<T>(matrix[0][0], matrix[1][0], matrix[2][0],
-			T_Vector3<T>(matrix[0][1], matrix[1][1], matrix[2][1],
-			T_Vector3<T>(matrix[0][2], matrix[1][2], matrix[2][2]
-			);
+			T_Vector3<T>(matrix[0][0], matrix[1][0], matrix[2][0]),
+			T_Vector3<T>(matrix[0][1], matrix[1][1], matrix[2][1]),
+			T_Vector3<T>(matrix[0][2], matrix[1][2], matrix[2][2])
+		);
 }
 
 template<typename T>

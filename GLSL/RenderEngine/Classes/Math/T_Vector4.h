@@ -5,6 +5,11 @@
 #include <ostream>
 
 template<typename T>
+struct T_Vector2;
+template<typename T>
+struct T_Vector3;
+
+template<typename T>
 struct T_Vector4
 {
 public:
@@ -19,6 +24,8 @@ public:
 	T_Vector4();
 	T_Vector4(T _x);
 	T_Vector4(T _x, T _y, T _z, T _w);
+	T_Vector4(const T_Vector2<T>& vector, T _z, T _w);
+	T_Vector4(const T_Vector3<T>& vector, T _w);
 	T_Vector4(const T_Vector4<T>& copy);
 
 	const T_Vector4<T>& operator=(const T_Vector4<T>& Vectortor);

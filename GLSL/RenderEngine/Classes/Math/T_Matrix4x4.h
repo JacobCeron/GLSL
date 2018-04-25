@@ -8,6 +8,9 @@
 #include "T_Vector4.h"
 
 template<typename T>
+struct T_Matrix3x3;
+
+template<typename T>
 struct T_Matrix4x4
 {
 public:
@@ -19,6 +22,7 @@ private:
 public:
 	T_Matrix4x4();
 	T_Matrix4x4(const T_Vector4<T>& v1, const T_Vector4<T>& v2, const T_Vector4<T>& v3, const T_Vector4<T>& v4);
+	T_Matrix4x4(const T_Matrix3x3<T>& matrix, const T_Vector4<T>& vector);
 	T_Matrix4x4(const T_Matrix4x4<T>& copy);
 
 	const T_Matrix4x4<T>& operator=(const T_Matrix4x4<T>& matrix);

@@ -36,7 +36,7 @@ void main()
 {
 	vec3 ambient = Light.La * Material.Ka;
 
-	vec3 n = normalize(NormalMatrix * vNor);
+	vec3 n = normalize(transpose(inverse(NormalMatrix)) * vNor);
 	vec4 eyeCoord = ModelViewMatrix * vec4(vPos, 1.0f);
 	vec3 s = normalize(vec3(Light.LightPosition - eyeCoord));
 	vec3 diffuse = Light.Ld * Material.Kd * max(dot(n, s), 0.0f);

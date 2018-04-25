@@ -3,6 +3,9 @@
 #include <assert.h>
 #include <cmath>
 
+#include "T_Vector3.h"
+#include "T_Vector4.h"
+
 template<typename T>
 size_t T_Vector2<T>::size{ 2 };
 
@@ -22,8 +25,18 @@ T_Vector2<T>::T_Vector2(T _x, T _y)
 {}
 
 template<typename T>
+T_Vector2<T>::T_Vector2(const T_Vector3<T>& vector)
+	: T_Vector2(vector.x, vector.y)
+{}
+
+template<typename T>
+T_Vector2<T>::T_Vector2(const T_Vector4<T>& vector)
+	: T_Vector2(vector.x, vector.y)
+{}
+
+template<typename T>
 T_Vector2<T>::T_Vector2(const T_Vector2<T>& copy)
-	: x{ copy.x }, y{ copy.y }
+	: T_Vector2(copy.x, copy.y)
 {}
 
 template<typename T>

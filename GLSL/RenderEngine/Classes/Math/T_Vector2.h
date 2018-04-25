@@ -5,6 +5,11 @@
 #include <ostream>
 
 template<typename T>
+struct T_Vector3;
+template<typename T>
+struct T_Vector4;
+
+template<typename T>
 struct T_Vector2
 {
 public:
@@ -19,9 +24,11 @@ public:
 	T_Vector2();
 	T_Vector2(T _x);
 	T_Vector2(T _x, T _y);
+	T_Vector2(const T_Vector3<T>& vector);
+	T_Vector2(const T_Vector4<T>& vector);
 	T_Vector2(const T_Vector2<T>& copy);
 
-	const T_Vector2<T>& operator=(const T_Vector2<T>& Vectortor);
+	const T_Vector2<T>& operator=(const T_Vector2<T>& vector);
 	T& operator[](size_t index);
 	const T& operator[](size_t index) const;
 
@@ -60,11 +67,11 @@ public:
 	friend T_Vector2<T> operator/(const T_Vector2<T>& left, const T_Vector2<T>& right);
 
 	template<typename T>
-	friend std::ostream& operator<<(std::ostream& ost, const T_Vector2<T>& Vectortor);
+	friend std::ostream& operator<<(std::ostream& ost, const T_Vector2<T>& vector);
 
-	static T magnitud(const T_Vector2<T>& Vectortor);
+	static T magnitud(const T_Vector2<T>& vector);
 	static T dot(const T_Vector2<T>& left, const T_Vector2<T>& right);
-	static T_Vector2<T> normalize(const T_Vector2<T>& Vectortor);
+	static T_Vector2<T> normalize(const T_Vector2<T>& vector);
 };
 
 #endif

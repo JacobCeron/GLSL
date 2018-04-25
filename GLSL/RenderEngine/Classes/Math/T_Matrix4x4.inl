@@ -2,6 +2,8 @@
 
 #include <cassert>
 
+#include "T_Matrix3x3.h"
+
 template<typename T>
 size_t T_Matrix4x4<T>::rows{ 4 };
 
@@ -22,11 +24,15 @@ T_Matrix4x4<T>::T_Matrix4x4(const T_Vector4<T>& v1, const T_Vector4<T>& v2, cons
 }
 
 template<typename T>
-T_Matrix4x4<T>::T_Matrix4x4(const T_Matrix4x4<T>& copy)
+T_Matrix4x4<T>::T_Matrix4x4(const T_Matrix3x3<T>& matrix, const T_Vector4<T>& vector)
+	: T_Matrix4x4(matrix[0], matrix[1], matrix[2], vector)
 {
-	for (size_t i{ 0 }; i < rows; i++)
-		data[i] = copy[i];
 }
+
+template<typename T>
+T_Matrix4x4<T>::T_Matrix4x4(const T_Matrix4x4<T>& copy)
+	: T_Matrix4x4(copy[0], copy[1], copy[2], copy[3])
+{}
 
 template<typename T>
 const T_Matrix4x4<T>& T_Matrix4x4<T>::operator=(const T_Matrix4x4<T>& matrix)
@@ -184,7 +190,7 @@ T_Matrix4x4<T> T_Matrix4x4<T>::translate(const T_Matrix4x4<T>& matrix, const T_V
 	Result[3].x += vector.x;
 	Result[3].y += vector.y;
 	Result[3].z += vector.z;
-	return R;
+	return Result;
 }
 
 template<typename T>
@@ -194,8 +200,7 @@ T_Matrix4x4<T> T_Matrix4x4<T>::scale(const T_Matrix4x4<T>& matrix, const T_Vecto
 	Result[0].x *= vector.x;
 	Result[1].y *= vector.y;
 	Result[2].z *= vector.z;
-	Result[3].w *= vector.w;
-	return R;
+	return Result;
 }
 
 template<typename T>
@@ -263,7 +268,7 @@ T_Matrix4x4<T> T_Matrix4x4<T>::ortho(T left, T right, T bottom, T top, T near, T
 	T_Matrix4x4<T> Result;
 	Result[0][0] = 2.0f / (right - left);
 	Result[1][1] = 2.0f / (top - bottom);
-	Result[2][2] = 2.0f / (far - near);
+	Result[2][2] = 2.0f / (near - far);
 	Result[3][0] = -(right + left) / (right - left);
 	Result[3][1] = -(top + bottom) / (top - bottom);
 	Result[3][2] = -(far + near) / (far - near);
