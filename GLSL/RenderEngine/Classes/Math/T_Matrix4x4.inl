@@ -55,10 +55,10 @@ const T_Vector4<T>& T_Matrix4x4<T>::operator[](size_t index) const
 template<typename T>
 T_Matrix4x4<T> operator+(T left, const T_Matrix4x4<T>& right)
 {
-	T_Matrix4x4<T> R;
+	T_Matrix4x4<T> Result;
 	for (size_t i{ 0 }; i < T_Matrix4x4<T>::rows; i++)
-		R[i] = left + right[i];
-	return R;
+		Result[i] = left + right[i];
+	return Result;
 }
 
 template<typename T>
@@ -70,46 +70,46 @@ T_Matrix4x4<T> operator+(const T_Matrix4x4<T>& left, T right)
 template<typename T>
 T_Matrix4x4<T> operator+(const T_Matrix4x4<T>& left, const T_Matrix4x4<T>& right)
 {
-	T_Matrix4x4<T> R;
+	T_Matrix4x4<T> Result;
 	for (size_t i{ 0 }; i < T_Matrix4x4<T>::rows; i++)
-		R[i] = left[i] + right[i];
-	return R;
+		Result[i] = left[i] + right[i];
+	return Result;
 }
 
 template<typename T>
 T_Matrix4x4<T> operator-(T left, const T_Matrix4x4<T>& right)
 {
-	T_Matrix4x4<T> R;
+	T_Matrix4x4<T> Result;
 	for (size_t i{ 0 }; i < T_Matrix4x4<T>::rows; i++)
-		R[i] = left - right[i];
-	return R;
+		Result[i] = left - right[i];
+	return Result;
 }
 
 template<typename T>
 T_Matrix4x4<T> operator-(const T_Matrix4x4<T>& left, T right)
 {
-	T_Matrix4x4<T> R;
+	T_Matrix4x4<T> Result;
 	for (size_t i{ 0 }; i < T_Matrix4x4<T>::rows; i++)
-		R[i] = left[i] - right;
-	return R;
+		Result[i] = left[i] - right;
+	return Result;
 }
 
 template<typename T>
 T_Matrix4x4<T> operator-(const T_Matrix4x4<T>& left, const T_Matrix4x4<T>& right)
 {
-	T_Matrix4x4<T> R;
+	T_Matrix4x4<T> Result;
 	for (size_t i{ 0 }; i < T_Matrix4x4<T>::rows; i++)
-		R[i] = left[i] - right[i];
-	return R;
+		Result[i] = left[i] - right[i];
+	return Result;
 }
 
 template<typename T>
 T_Matrix4x4<T> operator*(T left, const T_Matrix4x4<T>& right)
 {
-	T_Matrix4x4<T> R;
+	T_Matrix4x4<T> Result;
 	for (size_t i{ 0 }; i < T_Matrix4x4<T>::rows; i++)
-		R[i] = left * right[i];
-	return R;
+		Result[i] = left * right[i];
+	return Result;
 }
 
 template<typename T>
@@ -172,22 +172,29 @@ T_Matrix4x4<T> T_Matrix4x4<T>::transpose(const T_Matrix4x4<T>& matrix)
 }
 
 template<typename T>
+T_Matrix4x4<T> T_Matrix4x4<T>::inverse(const T_Matrix4x4<T>& matrix)
+{
+	return T_Matrix4x4<T>();
+}
+
+template<typename T>
 T_Matrix4x4<T> T_Matrix4x4<T>::translate(const T_Matrix4x4<T>& matrix, const T_Vector3<T>& vector)
 {
-	T_Matrix4x4<T> R(matrix);
-	R[3].x += vector.x;
-	R[3].y += vector.y;
-	R[3].z += vector.z;
+	T_Matrix4x4<T> Result(matrix);
+	Result[3].x += vector.x;
+	Result[3].y += vector.y;
+	Result[3].z += vector.z;
 	return R;
 }
 
 template<typename T>
 T_Matrix4x4<T> T_Matrix4x4<T>::scale(const T_Matrix4x4<T>& matrix, const T_Vector3<T>& vector)
 {
-	T_Matrix4x4<T> R(matrix);
-	R[0].x *= vector.x;
-	R[1].y *= vector.y;
-	R[2].z *= vector.z;
+	T_Matrix4x4<T> Result(matrix);
+	Result[0].x *= vector.x;
+	Result[1].y *= vector.y;
+	Result[2].z *= vector.z;
+	Result[3].w *= vector.w;
 	return R;
 }
 

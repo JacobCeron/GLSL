@@ -54,6 +54,7 @@ public:
 	friend std::ostream& operator<<(std::ostream& ost, const T_Matrix4x4<T>& matrix);
 
 	static T_Matrix4x4<T> transpose(const T_Matrix4x4<T>& matrix);
+	static T_Matrix4x4<T> inverse(const T_Matrix4x4<T>& matrix);
 	static T_Matrix4x4<T> translate(const T_Matrix4x4<T>& matrix, const T_Vector3<T>& vector);
 	static T_Matrix4x4<T> scale(const T_Matrix4x4<T>& matrix, const T_Vector3<T>& vector);
 	static T_Matrix4x4<T> rotate(const T_Matrix4x4<T>& matrix, float angle, const T_Vector3<T>& axis);
