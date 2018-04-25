@@ -199,19 +199,19 @@ T_Matrix4x4<T> T_Matrix4x4<T>::rotate(const T_Matrix4x4<T>& matrix, float angle,
 	const T cosT{ cos(angle) };
 	const T sinT{ sin(angle) };
 
-	T_Vector3<T>::normalize(axis);
+	T_Vector3<T> u = T_Vector3<T>::normalize(axis);
 
-	Rotate[0][0] = cosT + (axis.x * axis.x) * (1 - cosT);
-	Rotate[1][0] = (axis.x * axis.y) * (1 - cosT) - axis.z * sinT;
-	Rotate[2][0] = (axis.x * axis.z) * (1 - cosT) + axis.y * sinT;
+	Rotate[0][0] = cosT + (u.x * u.x) * (1 - cosT);
+	Rotate[0][1] = (u.x * u.y) * (1 - cosT) - u.z * sinT;
+	Rotate[0][2] = (u.x * u.z) * (1 - cosT) + u.y * sinT;
 
-	Rotate[0][1] = (axis.y * axis.x) * (1 - cosT) + axis.z * sinT;
-	Rotate[1][1] = cosT + (axis.y * axis.y) * (1 - cosT);
-	Rotate[2][1] = (axis.y * axis.z) * (1 - cosT) - axis.x * sinT;
+	Rotate[1][0] = (u.y * u.x) * (1 - cosT) + u.z * sinT;
+	Rotate[1][1] = cosT + (u.y * u.y) * (1 - cosT);
+	Rotate[1][2] = (u.y * u.z) * (1 - cosT) - u.x * sinT;
 
-	Rotate[0][2] = (axis.z * axis.x) * (1 - cosT) - axis.y * sinT;
-	Rotate[1][2] = (axis.z * axis.y) * (1 - cosT) + axis.x * sinT;
-	Rotate[2][2] = cosT + (axis.y * axis.y) * (1 - cosT);
+	Rotate[2][0] = (u.z * u.x) * (1 - cosT) - u.y * sinT;
+	Rotate[2][1] = (u.z * u.y) * (1 - cosT) + u.x * sinT;
+	Rotate[2][2] = cosT + (u.z * u.z) * (1 - cosT);
 
 	T_Matrix4x4<T> Result;
 	Result[0] = matrix[0] * Rotate;

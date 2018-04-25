@@ -94,14 +94,14 @@ void MyApplication::Update()
 
 	model = glm::mat4();
 	//model = glm::translate(model, glm::vec3(1.5, 0, 0));
-	model = glm::rotate(model, glm::radians(time * 10.0f), glm::vec3(1, 1, 0));
+	model = glm::rotate(model, glm::radians(time * 10.0f), glm::vec3(1, 0, 0));
 	//ModelViewMatrix = view * model;
 
 	Matrix4x4 m;
 	m = Matrix4x4::rotate(m, radians(time * 10.0f), Vector3(1, 0, 0));
 
 	torus.material.shader.use();
-	torus.material.setMatrix4x4("model", m);
+	torus.material.setMatrix4x4("model", model);
 	torus.material.setMatrix4x4("view", view);
 	torus.material.setMatrix4x4("projection", ProjectionMatrix);
 	/*torus.material.setMatrix3x3("NormalMatrix", glm::mat3(glm::transpose(glm::inverse(ModelViewMatrix))));
