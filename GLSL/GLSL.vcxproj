@@ -187,8 +187,8 @@
   <ItemGroup>
     <None Include="RenderEngine\Classes\Math\T_Matrix3x3.inl" />
     <None Include="RenderEngine\Classes\Math\T_Matrix4x4.inl" />
-    <None Include="RenderEngine\shaders\Gouraud.frag" />
-    <None Include="RenderEngine\shaders\Gouraud.vert" />
+    <None Include="RenderEngine\shaders\Phong-per-vertex.frag" />
+    <None Include="RenderEngine\shaders\Phong-per-vertex.vert" />
     <None Include="RenderEngine\shaders\simple.frag" />
     <None Include="RenderEngine\shaders\simple.vert" />
     <None Include="RenderEngine\Classes\Vector.inl" />

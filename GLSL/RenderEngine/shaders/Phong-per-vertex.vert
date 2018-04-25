@@ -32,20 +32,33 @@ uniform mat4 MVP;
 
 uniform vec3 eye;
 
-void main()
+void getEyeSpace(out vec3 position, out vec3 normal)
+{
+	normal = normalize(transpose(inverse(NormalMatrix)) * vNor);
+	position = vec3(ModelViewMatrix * vec4(vPos, 1.0f));
+}
+
+vec3 phongModel(const vec3 position, const vec3 normal)
 {
 	vec3 ambient = Light.La * Material.Ka;
 
-	vec3 n = normalize(transpose(inverse(NormalMatrix)) * vNor);
-	vec4 eyeCoord = ModelViewMatrix * vec4(vPos, 1.0f);
-	vec3 s = normalize(vec3(Light.LightPosition - eyeCoord));
-	vec3 diffuse = Light.Ld * Material.Kd * max(dot(n, s), 0.0f);
+	vec3 s = normalize(Light.LightPosition.xyz - position);
+	vec3 diffuse = Light.Ld * Material.Kd * max(dot(normal, s), 0.0f);
 
-	vec3 eyeC = normalize(vec3(ModelViewMatrix * vec4(eye, 1.0f)));
-	vec3 v = normalize(-eyeCoord.xyz);
-	vec3 r = reflect(-s, n);
+	vec3 v = normalize(-position);
+	vec3 r = reflect(-s, normal);
 	vec3 specular = Light.Ls * Material.Ks * pow(max(dot(r, v), 0.0f), Material.Shininess);
 
-	LightIntensity = ambient + diffuse + specular;
+	return ambient + diffuse + specular;
+}
+
+void main()
+{
+	vec3 eyePos;
+	vec3 eyeNor;
+
+	getEyeSpace(eyePos, eyeNor);
+	LightIntensity = phongModel(eyePos, eyeNor);
+
 	gl_Position = MVP * vec4(vPos, 1.0f);
 }
