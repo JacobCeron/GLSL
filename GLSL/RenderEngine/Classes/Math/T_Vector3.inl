@@ -253,4 +253,15 @@ T_Vector3<T> T_Vector3<T>::normalize(const T_Vector3<T>& vector)
 	return T_Vector3<T>(vector / length);
 }
 
+template<typename T>
+inline T_Vector3<T> T_Vector3<T>::cross(const T_Vector3<T>& left, const T_Vector3<T>& right)
+{
+	return T_Vector3<T>
+		(
+			(left.y * right.z) - (left.z * right.y),
+			-((left.x * right.z) - (left.z * right.x)),
+			(left.x * right.z) - (left.y * right.x)
+		);
+}
+
 #endif

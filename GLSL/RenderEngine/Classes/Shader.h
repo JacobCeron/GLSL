@@ -2,7 +2,6 @@
 
 #include <string>
 #include <array>
-#include <glm\glm.hpp>
 
 #include "Maths.h"
 
@@ -29,19 +28,11 @@ public:
 	void use();
 	~Shader();
 	void operator()(const char* name, float value);
-	void operator()(const char* name, const glm::vec2& vector);
-	void operator()(const char* name, const glm::vec3& vector);
-	void operator()(const char* name, const glm::vec4& vector);
-	void operator()(const char* name, const glm::mat3& matrix);
-	void operator()(const char* name, const glm::mat4& matrix);
-
-	/**************************************************************************************************/
 	void operator()(const char* name, const Vector2& vector);
 	void operator()(const char* name, const Vector3& vector);
 	void operator()(const char* name, const Vector4& vector);
 	void operator()(const char* name, const Matrix3x3& matrix);
 	void operator()(const char* name, const Matrix4x4& matrix);
-	/**************************************************************************************************/
 
 	static std::string readShaderFile(const std::string& fileName);
 private:

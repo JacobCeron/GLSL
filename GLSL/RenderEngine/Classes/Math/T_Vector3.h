@@ -21,7 +21,7 @@ public:
 	T_Vector3(T _x, T _y, T _z);
 	T_Vector3(const T_Vector3<T>& copy);
 
-	const T_Vector3<T>& operator=(const T_Vector3<T>& Vectortor);
+	const T_Vector3<T>& operator=(const T_Vector3<T>& vector);
 	T& operator[](size_t index);
 	const T& operator[](size_t index) const;
 
@@ -60,11 +60,12 @@ public:
 	friend T_Vector3<T> operator/(const T_Vector3<T>& left, const T_Vector3<T>& right);
 
 	template<typename T>
-	friend std::ostream& operator<<(std::ostream& ost, const T_Vector3<T>& Vectortor);
+	friend std::ostream& operator<<(std::ostream& ost, const T_Vector3<T>& vector);
 
-	static T magnitud(const T_Vector3<T>& Vectortor);
+	static T magnitud(const T_Vector3<T>& vector);
 	static T dot(const T_Vector3<T>& left, const T_Vector3<T>& right);
-	static T_Vector3<T> normalize(const T_Vector3<T>& Vectortor);
+	static T_Vector3<T> normalize(const T_Vector3<T>& vector);
+	static T_Vector3<T> cross(const T_Vector3<T>& left, const T_Vector3<T>& right);
 };
 
 #endif

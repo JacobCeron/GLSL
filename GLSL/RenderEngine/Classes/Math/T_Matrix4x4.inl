@@ -143,10 +143,10 @@ T_Matrix4x4<T> operator*(const T_Matrix4x4<T>& left, const T_Matrix4x4<T>& right
 	for (size_t i{ 0 }; i < T_Matrix4x4<T>::rows; i++)
 	{
 		T_Vector4<T> temp(left[0][i], left[1][i], left[2][i], left[3][i]);
-		Result[0][i] = T_Vector4<T>::dot(temp, right[i]);
-		Result[1][i] = T_Vector4<T>::dot(temp, right[i]);
-		Result[2][i] = T_Vector4<T>::dot(temp, right[i]);
-		Result[3][i] = T_Vector4<T>::dot(temp, right[i]);
+		Result[0][i] = T_Vector4<T>::dot(temp, right[0]);
+		Result[1][i] = T_Vector4<T>::dot(temp, right[1]);
+		Result[2][i] = T_Vector4<T>::dot(temp, right[2]);
+		Result[3][i] = T_Vector4<T>::dot(temp, right[3]);
 	}
 	return Result;
 }
@@ -218,6 +218,48 @@ T_Matrix4x4<T> T_Matrix4x4<T>::rotate(const T_Matrix4x4<T>& matrix, float angle,
 	Result[1] = matrix[1] * Rotate;
 	Result[2] = matrix[2] * Rotate;
 	Result[3] = matrix[3] * Rotate;
+
+	return Result;
+}
+
+template<typename T>
+T_Matrix4x4<T> T_Matrix4x4<T>::lookAt(const T_Vector3<T>& eye, const T_Vector3<T>& target, const T_Vector3<T>& up)
+{
+	T_Vector3<T> zAxis(T_Vector3<T>::normalize(eye - target));
+	T_Vector3<T> xAxis(T_Vector3<T>::normalize(T_Vector3<T>::cross(up, zAxis)));
+	T_Vector3<T> yAxis(T_Vector3<T>::cross(zAxis, xAxis));
+
+	T_Matrix4x4<T> Rotate;
+	Rotate[0][0] = xAxis.x;
+	Rotate[1][0] = xAxis.y;
+	Rotate[2][0] = xAxis.z;
+	
+	Rotate[0][1] = yAxis.x;
+	Rotate[1][1] = yAxis.y;
+	Rotate[2][1] = yAxis.z;
+
+	Rotate[0][2] = zAxis.x;
+	Rotate[1][2] = zAxis.y;
+	Rotate[2][2] = zAxis.z;
+
+	T_Matrix4x4<T> Translate;
+	Translate[3][0] = -eye.x;
+	Translate[3][1] = -eye.y;
+	Translate[3][2] = -eye.z;
+
+	return Rotate * Translate;
+}
+
+template<typename T>
+T_Matrix4x4<T> T_Matrix4x4<T>::ortho(T left, T right, T bottom, T top, T near, T far)
+{
+	T_Matrix4x4<T> Result;
+	Result[0][0] = 2.0f / (right - left);
+	Result[1][1] = 2.0f / (top - bottom);
+	Result[2][2] = 2.0f / (far - near);
+	Result[3][0] = -(right + left) / (right - left);
+	Result[3][1] = -(top + bottom) / (top - bottom);
+	Result[3][2] = -(far + near) / (far - near);
 
 	return Result;
 }

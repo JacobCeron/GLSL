@@ -2,7 +2,6 @@
 
 #include <vector>
 #include "Maths.h"
-#include "Vector.h"
 
 class Mesh
 {
