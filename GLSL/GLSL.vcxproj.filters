@@ -133,11 +133,7 @@
     <None Include="RenderEngine\Classes\Math\T_Matrix3x3.inl">
       <Filter>Header Files</Filter>
     </None>
-    <None Include="shaders\Phong-per-vertex.frag" />
-    <None Include="shaders\Phong-per-vertex.vert" />
-    <None Include="shaders\simple.frag" />
-    <None Include="shaders\simple.vert" />
-    <None Include="shaders\test.frag" />
-    <None Include="shaders\test.vert" />
+    <None Include="shaders\Phong.vert" />
+    <None Include="shaders\Phong.frag" />
   </ItemGroup>
 </Project>

@@ -7,7 +7,7 @@ class MyApplication :
 	public Application
 {
 private:
-	RenderMesh sphere;
+	RenderMesh renderMesh;
 
 public:
 	virtual void Start();
