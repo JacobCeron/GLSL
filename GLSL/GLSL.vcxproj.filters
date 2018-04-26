@@ -135,5 +135,7 @@
     </None>
     <None Include="shaders\Phong.vert" />
     <None Include="shaders\Phong.frag" />
+    <None Include="shaders\Flat.vert" />
+    <None Include="shaders\Flat.frag" />
   </ItemGroup>
 </Project>

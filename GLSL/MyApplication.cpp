@@ -6,8 +6,8 @@
 void MyApplication::Start()
 {
 	Shader shaderObj;
-	shaderObj.compileShader(Shader::readShaderFile("shaders/Phong.vert").c_str(), Shader::VERTEX);
-	shaderObj.compileShader(Shader::readShaderFile("shaders/Phong.frag").c_str(), Shader::FRAGMENT);
+	shaderObj.compileShader(Shader::readShaderFile("shaders/Flat.vert").c_str(), Shader::VERTEX);
+	shaderObj.compileShader(Shader::readShaderFile("shaders/Flat.frag").c_str(), Shader::FRAGMENT);
 	shaderObj.linkProgram();
 	renderMesh.material.shader = shaderObj;
 
@@ -43,21 +43,18 @@ void MyApplication::Update()
 	LightPosition.z = sin(time / 3.0f) * 10.0f;
 
 	renderMesh.material.shader.use();
-	// Vertex Shader
+
 	renderMesh.material.setMatrix(1, ModelMatrix);
 	renderMesh.material.setMatrix(2, ViewMatrix);
 	renderMesh.material.setMatrix(3, ProjectionMatrix);
-	// Fragment Shader
 	renderMesh.material.setVector("EyePosition", Vector3(0.0f, 0.0f, 10.0f));
-	// Light
+
 	renderMesh.material.setVector("Light.Position", LightPosition);
 	renderMesh.material.setVector("Light.La", Vector3(0.2f, 0.2f, 0.2f));
 	renderMesh.material.setVector("Light.Ld", Vector3(0.5f, 0.5f, 0.5f));
-	renderMesh.material.setVector("Light.Ls", Vector3(1.0f, 0.5f, 0.31f));
-	// Material
-	renderMesh.material.setVector("Material.Ka", Vector3(1.0f, 0.5f, 0.31f));
-	renderMesh.material.setVector("Material.Kd", Vector3(1.0f, 0.5f, 0.31f));
-	renderMesh.material.setVector("Material.Ks", Vector3(0.5f, 0.5f, 0.5f));
-	renderMesh.material.setFloat("Material.Shininess", 128.0f);
+	renderMesh.material.setVector("Light.Ls", Vector3(1.0f, 1.0f, 1.0f));
+
+	renderMesh.material.setFloat("Material.Shininess", 2.0f);
+
 	renderMesh.draw();
 }
