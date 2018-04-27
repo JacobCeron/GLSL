@@ -188,6 +188,8 @@
     <None Include="RenderEngine\Classes\Math\T_Matrix3x3.inl" />
     <None Include="RenderEngine\Classes\Math\T_Matrix4x4.inl" />
     <None Include="RenderEngine\Classes\Vector.inl" />
+    <None Include="shaders\Toon.frag" />
+    <None Include="shaders\Toon.vert" />
     <None Include="shaders\Flat.frag" />
     <None Include="shaders\Flat.vert" />
     <None Include="shaders\Phong.frag" />

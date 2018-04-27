@@ -137,5 +137,7 @@
     <None Include="shaders\Phong.frag" />
     <None Include="shaders\Flat.vert" />
     <None Include="shaders\Flat.frag" />
+    <None Include="shaders\Toon.frag" />
+    <None Include="shaders\Toon.vert" />
   </ItemGroup>
 </Project>
