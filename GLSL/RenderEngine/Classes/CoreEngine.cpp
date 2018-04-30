@@ -20,12 +20,15 @@ void CoreEngine::run(CoreEngine& app)
 
 			while (!m_window.closeWindow())
 			{
-				m_window.clearBuffers();
-				glViewport(0, 0, m_window.getWidth(), m_window.getHeight());
-
 				float currentFrame{ static_cast<float>(glfwGetTime()) };
 				Time::deltaTime = currentFrame - lastFrame;
 				lastFrame = currentFrame;
+
+				Input::mousePosition.x = m_window.getXPos();
+				Input::mousePosition.y = m_window.getYPos();
+
+				m_window.clearBuffers();
+				glViewport(0, 0, m_window.getWidth(), m_window.getHeight());
 
 				app.Update();
 

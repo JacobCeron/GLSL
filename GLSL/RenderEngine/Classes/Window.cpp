@@ -1,5 +1,6 @@
 #include <glad\glad.h>
 #include "Window.h"
+#include "Input.h"
 
 Window* Window::window = nullptr;
 
@@ -25,6 +26,9 @@ bool Window::createWindow()
 	glfwMakeContextCurrent(m_window);
 	glfwSetFramebufferSizeCallback(m_window, framebufferSizeCallback);
 	glfwSetCursorPosCallback(m_window, cursorPosCallback);
+
+	Input::m_window = m_window;
+
 	return true;
 }
 

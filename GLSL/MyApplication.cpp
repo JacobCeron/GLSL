@@ -20,7 +20,7 @@ void MyApplication::Start()
 	renderMesh.material.shader = shaderObj;
 
 	Mesh mesh;
-	mesh.loadModel("C:/Users/UserHp/Desktop/Models/cube.obj");
+	mesh.loadModel("C:/Users/UserHp/Desktop/Models/torus.obj");
 	renderMesh.mesh = mesh;
 
 	renderMesh.init();
@@ -30,9 +30,8 @@ void MyApplication::Update()
 {
 	m_window.color(Vector3(0.5f, 0.5f, 0.5f));
 
-	time += Time::deltaTime * 60.0f;
-	transform.Rotate(Vector3(6.0f, 1.0f, 0.0f));
-	transform.localScale = Vector3(6.0f);
+	transform.Rotate(Vector3(Time::deltaTime * 60.0f, Time::deltaTime * 60.0f, 0.0f));
+	transform.localScale = Vector3(3.0f);
 
 	Matrix4x4 ViewMatrix;
 	ViewMatrix = Matrix4x4::lookAt(Vector3(0.0f, 0.0f, 10.0f), Vector3(0.0f, 0.0f, 0.0f), Vector3(0.0f, 1.0f, 0.0f));

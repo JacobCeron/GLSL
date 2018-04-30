@@ -29,9 +29,7 @@ Matrix4x4 Transform::getLocalToWorldMatrix()
 	localToWorldMatrix = Matrix4x4();
 
 	localToWorldMatrix = Matrix4x4::translate(localToWorldMatrix, position);
-
 	localToWorldMatrix = Matrix4x4::scale(localToWorldMatrix, localScale);
-
 	if (rotation.x != 0.0f)
 		localToWorldMatrix = Matrix4x4::rotate(localToWorldMatrix, radians(rotation.x), Vector3(1.0f, 0.0f, 0.0f));
 	if (rotation.y != 0.0f)

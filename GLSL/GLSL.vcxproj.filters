@@ -72,6 +72,9 @@
     <ClCompile Include="RenderEngine\Classes\CoreEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RenderEngine\Classes\Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RenderEngine\Classes\ElementBuffer.h">
@@ -132,6 +135,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RenderEngine\Classes\CoreEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderEngine\Classes\Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

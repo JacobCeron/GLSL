@@ -2,11 +2,12 @@
 
 #include <GLFW\glfw3.h>
 #include "Maths.h"
+#include "Input.h"
 
 class Window
 {
 private:
-	GLFWwindow * m_window;
+	GLFWwindow* m_window;
 	int m_width;
 	int m_height;
 	double m_xPos;
@@ -36,4 +37,6 @@ public:
 
 	static void framebufferSizeCallback(GLFWwindow* w, int width, int height);
 	static void cursorPosCallback(GLFWwindow* w, double xPos, double yPos);
+
+	friend class Input;
 };
