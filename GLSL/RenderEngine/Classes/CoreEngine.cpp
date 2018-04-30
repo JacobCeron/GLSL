@@ -1,13 +1,13 @@
-#include "Application.h"
+#include "CoreEngine.h"
 #include "Time.h"
 
-Application::Application()
-{
-}
+CoreEngine::CoreEngine(int width, int height, const char* name)
+	: m_window(width, height, name)
+{}
 
-void Application::run(Application& app)
+void CoreEngine::run(CoreEngine& app)
 {
-	if (m_window.createWindow(666, 600, "OpenGL"))
+	if (m_window.createWindow())
 	{
 		m_window.windowCallbacks(&m_window);
 		if (m_window.initGL())
@@ -16,8 +16,11 @@ void Application::run(Application& app)
 
 			float lastFrame{ 0.0f };
 
+			m_window.enableBuffers();
+
 			while (!m_window.closeWindow())
 			{
+				m_window.clearBuffers();
 				glViewport(0, 0, m_window.getWidth(), m_window.getHeight());
 
 				float currentFrame{ static_cast<float>(glfwGetTime()) };
@@ -33,6 +36,6 @@ void Application::run(Application& app)
 	}
 }
 
-Application::~Application()
+CoreEngine::~CoreEngine()
 {
 }

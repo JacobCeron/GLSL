@@ -3,6 +3,14 @@
 #include "MyApplication.h"
 #include "RenderEngine/Classes/Time.h"
 
+#include <iostream>
+
+MyApplication::MyApplication(int width, int height, const char * name)
+	: CoreEngine(width, height, name)
+{}
+
+float time = 0.5f;
+
 void MyApplication::Start()
 {
 	Shader shaderObj;
@@ -12,49 +20,40 @@ void MyApplication::Start()
 	renderMesh.material.shader = shaderObj;
 
 	Mesh mesh;
-	mesh.loadModel("ObjFiles/torus.obj");
+	mesh.loadModel("C:/Users/UserHp/Desktop/Models/cube.obj");
 	renderMesh.mesh = mesh;
 
 	renderMesh.init();
-	
-	glEnable(GL_DEPTH_TEST);
 }
 
 void MyApplication::Update()
 {
-	glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	m_window.color(Vector3(0.5f, 0.5f, 0.5f));
 
-	static float time{ 0.5f };
-	time += Time::deltaTime * 6.0f;
-
-	Matrix4x4 ModelMatrix;
-	ModelMatrix = Matrix4x4::scale(ModelMatrix, Vector3(3.0f));
-	ModelMatrix = Matrix4x4::rotate(ModelMatrix, radians(time) * 6.0f, Vector3(0.0f, 1.0f, 1.0f));
-	ModelMatrix = Matrix4x4::translate(ModelMatrix, Vector3(0.0f, 0.0f, 0.0f));
+	time += Time::deltaTime * 60.0f;
+	transform.Rotate(Vector3(6.0f, 1.0f, 0.0f));
+	transform.localScale = Vector3(6.0f);
 
 	Matrix4x4 ViewMatrix;
 	ViewMatrix = Matrix4x4::lookAt(Vector3(0.0f, 0.0f, 10.0f), Vector3(0.0f, 0.0f, 0.0f), Vector3(0.0f, 1.0f, 0.0f));
 	Matrix4x4 ProjectionMatrix;
-	ProjectionMatrix = Matrix4x4::ortho(-10.0f, 10.0f, -10.0f, 10.0f, -20.0f, 20.0f);
+	ProjectionMatrix = Matrix4x4::ortho(-10.0f, 10.0f, -10.0f, 10.0f, -60.0f, 60.0f);
 
 	static Vector3 LightPosition(6.0f, 6.0f, 6.0f);
-	LightPosition.x = cos(time / 3.0f) * 10.0f;
-	LightPosition.z = sin(time / 3.0f) * 10.0f;
 
 	renderMesh.material.shader.use();
 
-	renderMesh.material.setMatrix(1, ModelMatrix);
+	renderMesh.material.setMatrix(1, transform.getLocalToWorldMatrix());
 	renderMesh.material.setMatrix(2, ViewMatrix);
 	renderMesh.material.setMatrix(3, ProjectionMatrix);
 	renderMesh.material.setVector("EyePosition", Vector3(0.0f, 0.0f, 10.0f));
 
 	renderMesh.material.setVector("Light.Position", LightPosition);
-	renderMesh.material.setVector("Light.La", Vector3(1.0f, 1.0f, 0.0f));
-	renderMesh.material.setVector("Light.Ld", Vector3(1.0f, 1.0f, 0.0f));
+	renderMesh.material.setVector("Light.La", Vector3(1.0f, 1.0f, 1.0f));
+	renderMesh.material.setVector("Light.Ld", Vector3(1.0f, 1.0f, 1.0f));
 
-	renderMesh.material.setVector("Material.Ka", Vector3(0.25f, 0.05f, 0.0f));
-	renderMesh.material.setVector("Material.Kd", Vector3(1.0f, 0.2f, 0.0f));
+	renderMesh.material.setVector("Material.Ka", Vector3(0.1f, 0.0f, 0.5f));
+	renderMesh.material.setVector("Material.Kd", Vector3(0.25f, 0.0f, 1.0f));
 	renderMesh.material.setFloat("levels", 3.0f);
 
 	renderMesh.draw();

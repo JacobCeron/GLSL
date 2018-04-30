@@ -2,15 +2,15 @@
 
 #include "Window.h"
 
-class Application
+class CoreEngine
 {
 public:
 	Window m_window;
 
 public:
-	Application();
-	void run(Application& app);
+	CoreEngine(int width, int height, const char* name);
+	void run(CoreEngine& app);
 	virtual void Start() = 0;
 	virtual void Update() = 0;
-	~Application();
+	~CoreEngine();
 };

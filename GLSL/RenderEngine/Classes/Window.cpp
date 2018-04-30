@@ -3,9 +3,9 @@
 
 Window* Window::window = nullptr;
 
-Window::Window()
-{
-}
+Window::Window(int width, int height, const char* name)
+	: m_width{ width }, m_height{ height }, m_name{ name }
+{}
 
 void Window::init()
 {
@@ -15,17 +15,9 @@ void Window::init()
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 }
 
-void Window::initMembers(int width, int height, const char * name)
-{
-	m_width = width;
-	m_height = height;
-	m_name = name;
-}
-
-bool Window::createWindow(int width, int height, const char* name)
+bool Window::createWindow()
 {
 	init();
-	initMembers(width, height, name);
 	m_window = glfwCreateWindow(m_width, m_height, m_name, nullptr, nullptr);
 
 	if (m_window == nullptr)
@@ -43,9 +35,24 @@ bool Window::initGL()
 	return true;
 }
 
+void Window::enableBuffers()
+{
+	glEnable(GL_DEPTH_TEST);
+}
+
 bool Window::closeWindow()
 {
 	return glfwWindowShouldClose(m_window);
+}
+
+void Window::color(const Vector3& color)
+{
+	glClearColor(color.r, color.g, color.b, 1.0f);
+}
+
+void Window::clearBuffers()
+{
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void Window::SwapImageBuffers()

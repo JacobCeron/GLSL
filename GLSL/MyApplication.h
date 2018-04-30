@@ -1,15 +1,18 @@
 #pragma once
 
-#include "RenderEngine/Classes/Application.h"
+#include "RenderEngine/Classes/CoreEngine.h"
 #include "RenderEngine/Classes/RenderMesh.h"
+#include "RenderEngine\Classes\Transform.h"
 
 class MyApplication :
-	public Application
+	public CoreEngine
 {
 private:
 	RenderMesh renderMesh;
+	Transform transform;
 
 public:
+	MyApplication(int width, int height, const char* name);
 	virtual void Start();
 	virtual void Update();
 };

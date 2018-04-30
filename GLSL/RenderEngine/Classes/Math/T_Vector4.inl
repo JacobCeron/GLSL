@@ -114,6 +114,18 @@ const T_Vector4<T>& T_Vector4<T>::operator--(int)
 }
 
 template<typename T>
+bool operator==(const T_Vector3<T>& left, const T_Vector3<T>& right)
+{
+	return (left.x == right.x && left.y == right.y && left.z == right.z);
+}
+
+template<typename T>
+bool operator!=(const T_Vector3<T>& left, const T_Vector3<T>& right)
+{
+	return !(left == right);
+}
+
+template<typename T>
 T_Vector4<T> operator+(const T_Vector4<T>& left, T right)
 {
 	return T_Vector4<T>

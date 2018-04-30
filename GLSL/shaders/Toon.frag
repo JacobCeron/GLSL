@@ -25,7 +25,7 @@ uniform LightProperties Light;
 uniform MaterialProperties Material;
 uniform float levels;
 
-vec3 celModel(vec3 FragmentPosition, vec3 Normal)
+vec3 toonModel(vec3 FragmentPosition, vec3 Normal)
 {
 	vec3 ambient = Light.La * Material.Ka;
 
@@ -41,6 +41,6 @@ vec3 celModel(vec3 FragmentPosition, vec3 Normal)
 
 void main()
 {
-	vec3 lightColor = celModel(FragmentPosition, Normal);
+	vec3 lightColor = toonModel(FragmentPosition, Normal);
 	FragmentColor = vec4(lightColor, 1.0f);
 }

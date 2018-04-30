@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GLFW\glfw3.h>
+#include "Maths.h"
 
 class Window
 {
@@ -14,12 +15,14 @@ private:
 	static Window* window;
 
 public:
-	Window();
+	Window(int width, int height, const char* name);
 	void init();
-	void initMembers(int width, int height, const char* name);
-	bool createWindow(int width, int height, const char* name);
+	bool createWindow();
 	bool initGL();
+	void enableBuffers();
 	bool closeWindow();
+	void color(const Vector3& color);
+	void clearBuffers();
 	void SwapImageBuffers();
 	void PollEvents();
 	void windowCallbacks(Window* w);

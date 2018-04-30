@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="RenderEngine\Classes\Application.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="RenderEngine\Classes\ElementBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -66,11 +63,17 @@
     <ClCompile Include="MyApplication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RenderEngine\Classes\Transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderEngine\Classes\Quaternion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderEngine\Classes\CoreEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="RenderEngine\Classes\Application.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="RenderEngine\Classes\ElementBuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -120,6 +123,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MyApplication.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderEngine\Classes\Transform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderEngine\Classes\Quaternion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderEngine\Classes\CoreEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

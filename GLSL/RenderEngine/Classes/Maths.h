@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdint>
+
 #include "Math\T_Vector2.h"
 #include "Math\T_Vector3.h"
 #include "Math\T_Vector4.h"

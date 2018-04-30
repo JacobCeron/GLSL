@@ -146,10 +146,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="RenderEngine\Classes\Application.cpp" />
+    <ClCompile Include="RenderEngine\Classes\CoreEngine.cpp" />
     <ClCompile Include="RenderEngine\Classes\ElementBuffer.cpp" />
     <ClCompile Include="RenderEngine\Classes\glad.c" />
     <ClCompile Include="RenderEngine\Classes\Maths.cpp" />
+    <ClCompile Include="RenderEngine\Classes\Quaternion.cpp" />
     <ClCompile Include="RenderEngine\Classes\Math\T_Vector2.inl" />
     <ClCompile Include="RenderEngine\Classes\Math\T_Vector3.inl" />
     <ClCompile Include="RenderEngine\Classes\Math\T_Vector4.inl" />
@@ -160,13 +161,15 @@
     <ClCompile Include="RenderEngine\Classes\Shader.cpp" />
     <ClCompile Include="RenderEngine\Classes\Mesh.cpp" />
     <ClCompile Include="RenderEngine\Classes\Time.cpp" />
+    <ClCompile Include="RenderEngine\Classes\Transform.cpp" />
     <ClCompile Include="RenderEngine\Classes\VertexArray.cpp" />
     <ClCompile Include="RenderEngine\Classes\VertexBuffer.cpp" />
     <ClCompile Include="RenderEngine\Classes\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="RenderEngine\Classes\Application.h" />
+    <ClInclude Include="RenderEngine\Classes\CoreEngine.h" />
     <ClInclude Include="RenderEngine\Classes\ElementBuffer.h" />
+    <ClInclude Include="RenderEngine\Classes\Quaternion.h" />
     <ClInclude Include="RenderEngine\Classes\Math\T_Matrix3x3.h" />
     <ClInclude Include="RenderEngine\Classes\Math\T_Matrix4x4.h" />
     <ClInclude Include="RenderEngine\Classes\Material.h" />
@@ -179,6 +182,7 @@
     <ClInclude Include="RenderEngine\Classes\Maths.h" />
     <ClInclude Include="RenderEngine\Classes\Math\T_Vector3.h" />
     <ClInclude Include="RenderEngine\Classes\Math\T_Vector4.h" />
+    <ClInclude Include="RenderEngine\Classes\Transform.h" />
     <ClInclude Include="RenderEngine\Classes\Vector.h" />
     <ClInclude Include="RenderEngine\Classes\VertexArray.h" />
     <ClInclude Include="RenderEngine\Classes\VertexBuffer.h" />

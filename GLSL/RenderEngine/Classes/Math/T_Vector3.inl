@@ -109,6 +109,18 @@ const T_Vector3<T>& T_Vector3<T>::operator--(int)
 }
 
 template<typename T>
+bool operator==(const T_Vector3<T>& left, const T_Vector3<T>& right)
+{
+	return (left.x == right.x && left.y == right.y && left.z == right.z);
+}
+
+template<typename T>
+bool operator!=(const T_Vector3<T>& left, const T_Vector3<T>& right)
+{
+	return !(left == right);
+}
+
+template<typename T>
 T_Vector3<T> operator+(const T_Vector3<T>& left, T right)
 {
 	return T_Vector3<T>
@@ -271,9 +283,9 @@ inline T_Vector3<T> T_Vector3<T>::cross(const T_Vector3<T>& left, const T_Vector
 {
 	return T_Vector3<T>
 		(
-			(left.y * right.z) - (left.z * right.y),
-			-((left.x * right.z) - (left.z * right.x)),
-			(left.x * right.z) - (left.y * right.x)
+			left.y * right.z - left.z * right.y,
+			left.z * right.x - left.x * right.z,
+			left.x * right.y - left.y * right.x
 		);
 }
 

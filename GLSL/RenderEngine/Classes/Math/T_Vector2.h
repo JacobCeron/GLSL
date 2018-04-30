@@ -39,6 +39,11 @@ public:
 	const T_Vector2<T>& operator--(int);
 
 	template<typename T>
+	friend bool operator==(const T_Vector3<T>& left, const T_Vector3<T>& right);
+	template<typename T>
+	friend bool operator!=(const T_Vector3<T>& left, const T_Vector3<T>& right);
+
+	template<typename T>
 	friend T_Vector2<T> operator+(const T_Vector2<T>& left, T right);
 	template<typename T>
 	friend T_Vector2<T> operator+(T right, const T_Vector2<T>& left);
