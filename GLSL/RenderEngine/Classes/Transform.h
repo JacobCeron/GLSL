@@ -1,8 +1,10 @@
 #pragma once
 
+#include "Component.h"
 #include "Maths.h"
 
 class Transform
+	: public Component
 {
 public:
 	Vector3 localScale;

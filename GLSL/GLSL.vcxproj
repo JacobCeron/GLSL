@@ -146,8 +146,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="RenderEngine\Classes\Component.cpp" />
     <ClCompile Include="RenderEngine\Classes\CoreEngine.cpp" />
     <ClCompile Include="RenderEngine\Classes\ElementBuffer.cpp" />
+    <ClCompile Include="RenderEngine\Classes\GameObject.cpp" />
     <ClCompile Include="RenderEngine\Classes\glad.c" />
     <ClCompile Include="RenderEngine\Classes\Input.cpp" />
     <ClCompile Include="RenderEngine\Classes\Maths.cpp" />
@@ -168,8 +170,10 @@
     <ClCompile Include="RenderEngine\Classes\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="RenderEngine\Classes\Component.h" />
     <ClInclude Include="RenderEngine\Classes\CoreEngine.h" />
     <ClInclude Include="RenderEngine\Classes\ElementBuffer.h" />
+    <ClInclude Include="RenderEngine\Classes\GameObject.h" />
     <ClInclude Include="RenderEngine\Classes\Input.h" />
     <ClInclude Include="RenderEngine\Classes\Quaternion.h" />
     <ClInclude Include="RenderEngine\Classes\Math\T_Matrix3x3.h" />

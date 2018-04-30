@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Component.h"
+
 #include "Mesh.h"
 #include "Material.h"
 #include "VertexArray.h"
@@ -7,6 +9,7 @@
 #include "ElementBuffer.h"
 
 class RenderMesh
+	: public Component
 {
 public:
 	Mesh mesh;

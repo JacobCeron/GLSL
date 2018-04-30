@@ -13,7 +13,7 @@ enum KeyCode
 	W = GLFW_KEY_W,
 	S = GLFW_KEY_S,
 	Space = GLFW_KEY_SPACE,
-	//Escape = GLFW_KEY_ESCAPE,
+	Esc = GLFW_KEY_ESCAPE,
 	Enter = GLFW_KEY_ENTER
 };
 

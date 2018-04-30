@@ -23,6 +23,14 @@ void MyApplication::Start()
 	mesh.loadModel("C:/Users/UserHp/Desktop/Models/torus.obj");
 	renderMesh.mesh = mesh;
 
+	Transform* t = p1.getComponent<Transform>();
+	t->setName("Edgar");
+	std::cout << p1.getName() << std::endl;
+
+	RenderMesh* rm = p1.addComponent<RenderMesh>();
+	rm->setName("Jacob");
+	std::cout << p1.getName() << std::endl;
+
 	renderMesh.init();
 }
 
