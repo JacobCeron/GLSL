@@ -268,7 +268,7 @@ T_Matrix4x4<T> T_Matrix4x4<T>::ortho(T left, T right, T bottom, T top, T front, 
 	T_Matrix4x4<T> Result;
 	Result[0][0] = 2.0f / (right - left);
 	Result[1][1] = 2.0f / (top - bottom);
-	Result[2][2] = 2.0f / (front - back);
+	Result[2][2] = 2.0f / (back - front);
 	Result[3][0] = -(right + left) / (right - left);
 	Result[3][1] = -(top + bottom) / (top - bottom);
 	Result[3][2] = -(back + front) / (back - front);

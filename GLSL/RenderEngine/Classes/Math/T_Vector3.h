@@ -19,6 +19,10 @@ public:
 		struct { T r, g, b; };
 	};
 	static size_t size;
+	
+	static T_Vector3<T> right;
+	static T_Vector3<T> up;
+	static T_Vector3<T> forward;
 
 public:
 	T_Vector3();

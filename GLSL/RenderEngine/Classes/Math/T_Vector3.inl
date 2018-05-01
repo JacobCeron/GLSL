@@ -10,6 +10,13 @@ template<typename T>
 size_t T_Vector3<T>::size{ 3 };
 
 template<typename T>
+T_Vector3<T> T_Vector3<T>::right(1, 0, 0);
+template<typename T>
+T_Vector3<T> T_Vector3<T>::up(0, 1, 0);
+template<typename T>
+T_Vector3<T> T_Vector3<T>::forward(0, 0, 1);
+
+template<typename T>
 T_Vector3<T>::T_Vector3()
 	: x{ 0 }, y{ 0 }, z{ 0 }
 {}

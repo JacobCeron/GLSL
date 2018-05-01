@@ -4,8 +4,6 @@
 #include <map>
 #include "Transform.h"
 
-class Component;
-
 class GameObject
 {
 public:

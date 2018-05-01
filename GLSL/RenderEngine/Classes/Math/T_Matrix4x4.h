@@ -4,7 +4,6 @@
 
 #include <ostream>
 
-#include "T_Vector3.h"
 #include "T_Vector4.h"
 
 template<typename T>
