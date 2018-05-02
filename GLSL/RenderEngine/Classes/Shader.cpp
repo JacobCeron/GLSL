@@ -40,6 +40,16 @@ const unsigned int Shader::id() const
 	return m_programID;
 }
 
+void Shader::operator()(const char* name, int value)
+{
+	glUniform1i(glGetUniformLocation(id(), name), value);
+}
+
+void Shader::operator()(unsigned int name, int value)
+{
+	glUniform1i(name, value);
+}
+
 void Shader::operator()(const char* name, float value)
 {
 	glUniform1f(glGetUniformLocation(id(), name), value);

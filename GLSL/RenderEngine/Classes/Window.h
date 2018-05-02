@@ -6,6 +6,9 @@
 
 class Window
 {
+public:
+	static int s_width;
+	static int s_height;
 private:
 	GLFWwindow* m_window;
 	int m_width;
@@ -13,6 +16,7 @@ private:
 	double m_xPos;
 	double m_yPos;
 	const char* m_name;
+	
 	static Window* window;
 
 public:

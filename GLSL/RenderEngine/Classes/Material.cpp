@@ -11,6 +11,16 @@ Material::Material(const Material& copy)
 	: Material{ copy.shader }
 {}
 
+void Material::setInt(const char* name, int value)
+{
+	shader(name, value);
+}
+
+void Material::setInt(unsigned int name, int value)
+{
+	shader(name, value);
+}
+
 void Material::setFloat(const char* name, float value)
 {
 	shader(name, value);

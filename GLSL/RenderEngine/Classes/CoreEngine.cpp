@@ -30,8 +30,9 @@ void CoreEngine::run(CoreEngine& app)
 
 				m_window.color(Vector3(0.1921f, 0.3019f, 0.4745f));
 				m_window.clearBuffers();
-				glViewport(0, 0, m_window.getWidth(), m_window.getHeight());
+				glViewport(0, 0, Window::s_width, Window::s_height);
 
+				rendererEngine.UseShader();
 				app.Update();
 				rendererEngine.Renderer();
 

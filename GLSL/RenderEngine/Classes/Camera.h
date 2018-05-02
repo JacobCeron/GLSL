@@ -8,7 +8,7 @@ class Camera
 {
 public:
 	bool orthographic;
-	static Camera* current;
+	static Camera* currentCamera;
 private:
 	Matrix4x4 ViewMatrix;
 	Matrix4x4 ProjectionMatrix;

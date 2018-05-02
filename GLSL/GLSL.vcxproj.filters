@@ -87,6 +87,9 @@
     <ClCompile Include="RenderEngine\Classes\RendererEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RenderEngine\Classes\DirectionalLight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RenderEngine\Classes\ElementBuffer.h">
@@ -102,9 +105,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RenderEngine\Classes\Time.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderEngine\Classes\Vector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RenderEngine\Classes\VertexArray.h">
@@ -167,11 +167,11 @@
     <ClInclude Include="RenderEngine\Classes\MeshRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RenderEngine\Classes\DirectionalLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="RenderEngine\Classes\Vector.inl">
-      <Filter>Header Files</Filter>
-    </None>
     <None Include="RenderEngine\Classes\Math\T_Matrix4x4.inl">
       <Filter>Header Files</Filter>
     </None>
@@ -186,5 +186,7 @@
     <None Include="shaders\Toon.vert" />
     <None Include="shaders\Interpolation.vert" />
     <None Include="shaders\Interpolation.frag" />
+    <None Include="shaders\Cel.vert" />
+    <None Include="shaders\Cel.frag" />
   </ItemGroup>
 </Project>

@@ -12,6 +12,8 @@ public:
 	Material(const Shader& shader);
 	Material(const Material& copy);
 
+	void setInt(const char* name, int value);
+	void setInt(unsigned int name, int value);
 	void setFloat(const char* name, float value);
 	void setFloat(unsigned int name, float value);
 	void setVector(const char* name, const Vector2& vector);

@@ -149,6 +149,7 @@
     <ClCompile Include="RenderEngine\Classes\Camera.cpp" />
     <ClCompile Include="RenderEngine\Classes\Component.cpp" />
     <ClCompile Include="RenderEngine\Classes\CoreEngine.cpp" />
+    <ClCompile Include="RenderEngine\Classes\DirectionalLight.cpp" />
     <ClCompile Include="RenderEngine\Classes\ElementBuffer.cpp" />
     <ClCompile Include="RenderEngine\Classes\GameObject.cpp" />
     <ClCompile Include="RenderEngine\Classes\glad.c" />
@@ -176,6 +177,7 @@
     <ClInclude Include="RenderEngine\Classes\Camera.h" />
     <ClInclude Include="RenderEngine\Classes\Component.h" />
     <ClInclude Include="RenderEngine\Classes\CoreEngine.h" />
+    <ClInclude Include="RenderEngine\Classes\DirectionalLight.h" />
     <ClInclude Include="RenderEngine\Classes\ElementBuffer.h" />
     <ClInclude Include="RenderEngine\Classes\GameObject.h" />
     <ClInclude Include="RenderEngine\Classes\Input.h" />
@@ -194,7 +196,6 @@
     <ClInclude Include="RenderEngine\Classes\Math\T_Vector3.h" />
     <ClInclude Include="RenderEngine\Classes\Math\T_Vector4.h" />
     <ClInclude Include="RenderEngine\Classes\Transform.h" />
-    <ClInclude Include="RenderEngine\Classes\Vector.h" />
     <ClInclude Include="RenderEngine\Classes\VertexArray.h" />
     <ClInclude Include="RenderEngine\Classes\VertexBuffer.h" />
     <ClInclude Include="RenderEngine\Classes\Window.h" />
@@ -202,7 +203,8 @@
   <ItemGroup>
     <None Include="RenderEngine\Classes\Math\T_Matrix3x3.inl" />
     <None Include="RenderEngine\Classes\Math\T_Matrix4x4.inl" />
-    <None Include="RenderEngine\Classes\Vector.inl" />
+    <None Include="shaders\Cel.frag" />
+    <None Include="shaders\Cel.vert" />
     <None Include="shaders\Interpolation.frag" />
     <None Include="shaders\Interpolation.vert" />
     <None Include="shaders\Toon.frag" />

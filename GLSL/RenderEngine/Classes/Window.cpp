@@ -2,11 +2,16 @@
 #include "Window.h"
 #include "Input.h"
 
-Window* Window::window = nullptr;
+Window* Window::window{ nullptr };
+int Window::s_width{ 0 };
+int Window::s_height{ 0 };
 
 Window::Window(int width, int height, const char* name)
 	: m_width{ width }, m_height{ height }, m_name{ name }
-{}
+{
+	s_width = m_width;
+	s_height = m_height;
+}
 
 void Window::init()
 {
@@ -115,6 +120,8 @@ double Window::getYPos()
 
 void Window::framebufferSizeCallback(GLFWwindow* w, int width, int height)
 {
+	s_width = width;
+	s_height = height;
 	window->resize(width, height);
 }
 

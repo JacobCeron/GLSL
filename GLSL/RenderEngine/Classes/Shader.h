@@ -31,6 +31,8 @@ public:
 	const unsigned int id() const;
 	~Shader();
 
+	void operator()(const char* name, int value);
+	void operator()(unsigned int name, int value);
 	void operator()(const char* name, float value);
 	void operator()(unsigned int name, float value);
 	void operator()(const char* name, const Vector2& vector);

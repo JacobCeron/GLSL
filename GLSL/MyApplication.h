@@ -8,6 +8,8 @@ class MyApplication :
 {
 private:
 	GameObject camera;
+	GameObject dirLight;
+	GameObject dirLight2;
 	GameObject mainObj;
 
 public:
