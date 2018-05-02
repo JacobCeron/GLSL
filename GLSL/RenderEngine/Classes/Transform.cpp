@@ -24,25 +24,19 @@ void Transform::Scale(const Vector3 & scale)
 	localScale = scale;
 }
 
+/*
 Matrix4x4 Transform::getLocalToWorldMatrix()
 {
-	localToWorldMatrix = Matrix4x4();
-
-	localToWorldMatrix = Matrix4x4::translate(localToWorldMatrix, position);
-	localToWorldMatrix = Matrix4x4::scale(localToWorldMatrix, localScale);
-	if (rotation.x != 0.0f)
-		localToWorldMatrix = Matrix4x4::rotate(localToWorldMatrix, radians(rotation.x), Vector3(1.0f, 0.0f, 0.0f));
-	if (rotation.y != 0.0f)
-		localToWorldMatrix = Matrix4x4::rotate(localToWorldMatrix, radians(rotation.y), Vector3(0.0f, 1.0f, 0.0f));
-	if (rotation.z != 0.0f)
-		localToWorldMatrix = Matrix4x4::rotate(localToWorldMatrix, radians(rotation.z), Vector3(0.0f, 0.0f, 1.0f));
-
 	return localToWorldMatrix;
 }
+*/
 
-/*
 Matrix4x4 Transform::getWorldToLocalMatrix()
 {
-	return Matrix4x4::inverse(localToWorldMatrix);
+	worldToLocalMatrix = Matrix4x4();
+	worldToLocalMatrix = Matrix4x4::translate(worldToLocalMatrix, position);
+	worldToLocalMatrix = Matrix4x4::scale(worldToLocalMatrix, localScale);
+	worldToLocalMatrix = Matrix4x4::rotate(worldToLocalMatrix, radians(rotation.x + rotation.y + rotation.z), rotation);
+
+	return worldToLocalMatrix;
 }
-*/

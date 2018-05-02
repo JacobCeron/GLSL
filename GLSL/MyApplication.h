@@ -9,8 +9,8 @@ class MyApplication :
 	public CoreEngine
 {
 private:
+	GameObject camera;
 	GameObject mainObj;
-	GameObject mainCamera;
 
 public:
 	MyApplication(int width, int height, const char* name);

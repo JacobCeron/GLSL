@@ -226,10 +226,10 @@ T_Matrix4x4<T> T_Matrix4x4<T>::rotate(const T_Matrix4x4<T>& matrix, float angle,
 	Rotate[2][2] = cosT + (u.z * u.z) * (1 - cosT);
 
 	T_Matrix4x4<T> Result;
-	Result[0] = matrix[0] * Rotate;
-	Result[1] = matrix[1] * Rotate;
-	Result[2] = matrix[2] * Rotate;
-	Result[3] = matrix[3] * Rotate;
+	Result[0] = matrix[0] * Rotate[0][0] + matrix[1] * Rotate[1][0] + matrix[2] * Rotate[2][0];
+	Result[1] = matrix[0] * Rotate[0][1] + matrix[1] * Rotate[1][1] + matrix[2] * Rotate[2][1];
+	Result[2] = matrix[0] * Rotate[0][2] + matrix[1] * Rotate[1][2] + matrix[2] * Rotate[2][2];
+	Result[3] = matrix[3];
 
 	return Result;
 }
@@ -268,7 +268,7 @@ T_Matrix4x4<T> T_Matrix4x4<T>::ortho(T left, T right, T bottom, T top, T front, 
 	T_Matrix4x4<T> Result;
 	Result[0][0] = 2.0f / (right - left);
 	Result[1][1] = 2.0f / (top - bottom);
-	Result[2][2] = 2.0f / (back - front);
+	Result[2][2] = 2.0f / (front - back);
 	Result[3][0] = -(right + left) / (right - left);
 	Result[3][1] = -(top + bottom) / (top - bottom);
 	Result[3][2] = -(back + front) / (back - front);

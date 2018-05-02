@@ -178,5 +178,7 @@
     <None Include="shaders\Flat.frag" />
     <None Include="shaders\Toon.frag" />
     <None Include="shaders\Toon.vert" />
+    <None Include="shaders\Interpolation.vert" />
+    <None Include="shaders\Interpolation.frag" />
   </ItemGroup>
 </Project>

@@ -72,26 +72,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)</IntDir>
-    <IncludePath>C:\dev\GLSL\GLSL\Dependencies\OpenGL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\dev\GLSL\GLSL\Dependencies\OpenGL\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)GLSL\Dependencies\OpenGL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)GLSL\Dependencies\OpenGL\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)</IntDir>
-    <IncludePath>C:\dev\GLSL\GLSL\Dependencies\OpenGL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\dev\GLSL\GLSL\Dependencies\OpenGL\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)GLSL\Dependencies\OpenGL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)GLSL\Dependencies\OpenGL\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)</IntDir>
-    <IncludePath>C:\dev\GLSL\GLSL\Dependencies\OpenGL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\dev\GLSL\GLSL\Dependencies\OpenGL\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)GLSL\Dependencies\OpenGL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)GLSL\Dependencies\OpenGL\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)</IntDir>
-    <IncludePath>C:\dev\GLSL\GLSL\Dependencies\OpenGL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\dev\GLSL\GLSL\Dependencies\OpenGL\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)GLSL\Dependencies\OpenGL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)GLSL\Dependencies\OpenGL\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -201,6 +201,8 @@
     <None Include="RenderEngine\Classes\Math\T_Matrix3x3.inl" />
     <None Include="RenderEngine\Classes\Math\T_Matrix4x4.inl" />
     <None Include="RenderEngine\Classes\Vector.inl" />
+    <None Include="shaders\Interpolation.frag" />
+    <None Include="shaders\Interpolation.vert" />
     <None Include="shaders\Toon.frag" />
     <None Include="shaders\Toon.vert" />
     <None Include="shaders\Flat.frag" />

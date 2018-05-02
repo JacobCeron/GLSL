@@ -32,6 +32,8 @@ bool Window::createWindow()
 	glfwSetFramebufferSizeCallback(m_window, framebufferSizeCallback);
 	glfwSetCursorPosCallback(m_window, cursorPosCallback);
 
+	//glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
 	Input::m_window = m_window;
 
 	return true;

@@ -26,4 +26,6 @@ public:
 	void setMatrix(unsigned int name, const Matrix4x4& matrix);
 	void setSubroutine(const char* name, Shader::ShaderType type);
 	//void setSubrutine(const char* nameSubroutine, const char* name, Shader::ShaderType type);
+
+	void setMatrix(const char* name, const glm::mat4& matrix);
 };

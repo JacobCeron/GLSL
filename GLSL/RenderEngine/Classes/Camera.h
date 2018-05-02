@@ -7,6 +7,7 @@ class Camera
 	: public Behaviour
 {
 public:
+	bool orthographic;
 	static Camera* current;
 private:
 	Matrix4x4 ViewMatrix;

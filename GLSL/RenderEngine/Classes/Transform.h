@@ -21,6 +21,6 @@ public:
 	void Rotate(const Vector3& eulerAngles);
 	void Scale(const Vector3& scale);
 
-	Matrix4x4 getLocalToWorldMatrix();
-//	Matrix4x4 getWorldToLocalMatrix();
+//	Matrix4x4 getLocalToWorldMatrix();
+	Matrix4x4 getWorldToLocalMatrix();
 };

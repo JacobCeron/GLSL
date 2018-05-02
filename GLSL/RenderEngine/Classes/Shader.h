@@ -5,6 +5,8 @@
 
 #include "Maths.h"
 
+#include <glm\glm.hpp>
+
 class Shader
 {
 public:
@@ -43,6 +45,8 @@ public:
 	void operator()(unsigned int name, const Matrix4x4& matrix);
 	void operator()(const char* name, ShaderType type);
 	//void operator()(const char* nameSubroutine, const char* name, ShaderType type);
+
+	void operator()(const char* name, const glm::mat4& matrix);
 
 	static std::string readShaderFile(const std::string& fileName);
 private:

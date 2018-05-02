@@ -111,6 +111,11 @@ void Shader::operator()(const char* name, ShaderType type)
 	glUniformSubroutinesuiv(shaderType, 1, &indexSubroutine);
 }
 
+void Shader::operator()(const char* name, const glm::mat4 & matrix)
+{
+	glUniformMatrix4fv(glGetUniformLocation(id(), name), 1, GL_FALSE, &matrix[0][0]);
+}
+
 void Shader::error(unsigned int shader, ShaderType type)
 {
 	int success;

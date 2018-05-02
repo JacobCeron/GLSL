@@ -282,7 +282,10 @@ template<typename T>
 T_Vector3<T> T_Vector3<T>::normalize(const T_Vector3<T>& vector)
 {
 	T length{ magnitud(vector) };
-	return T_Vector3<T>(vector / length);
+	if (length != 0)
+		return T_Vector3<T>(vector / length);
+	else
+		return vector;
 }
 
 template<typename T>

@@ -75,3 +75,8 @@ void Material::setSubroutine(const char* name, Shader::ShaderType type)
 {
 	shader(name, type);
 }
+
+void Material::setMatrix(const char* name, const glm::mat4& matrix)
+{
+	shader(name, matrix);
+}
