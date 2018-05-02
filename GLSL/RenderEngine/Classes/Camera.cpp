@@ -36,6 +36,6 @@ Matrix4x4 Camera::getProjectionMatrix()
 	if (orthographic)
 		ProjectionMatrix = Matrix4x4::ortho(-6.0f, 6.0f, -6.0f, 6.0f, 0.0f, 600.0f);
 	else
-		// ProjectionMatrix = Matrix4x4::perspective();
+		return ProjectionMatrix;//ProjectionMatrix = Matrix4x4::perspective();
 	return ProjectionMatrix;
 }

@@ -1,6 +1,8 @@
 #include "GameObject.h"
 #include "Component.h"
 
+std::vector<GameObject*> GameObject::gameObjects;
+
 GameObject::GameObject()
 	: GameObject( "GameObject" )
 {}
@@ -10,6 +12,8 @@ GameObject::GameObject(const std::string& name)
 {
 	components[typeid(Transform).raw_name()] = &transform;
 	transform.gameObject = this;
+
+	gameObjects.push_back(this);
 }
 
 void GameObject::setName(const std::string& name)

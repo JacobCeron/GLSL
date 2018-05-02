@@ -8,7 +8,7 @@
 #include "VertexBuffer.h"
 #include "ElementBuffer.h"
 
-class RenderMesh
+class MeshRenderer
 	: public Component
 {
 public:
@@ -18,7 +18,13 @@ private:
 	VertexArray m_vA;
 
 public:
-	RenderMesh();
+	MeshRenderer();
+//	void init(); // Inside Renderer Engine
+//	void draw(); // Inside Renderer Engine
+
+private:
 	void init();
 	void draw();
+
+	friend class RendererEngine;
 };

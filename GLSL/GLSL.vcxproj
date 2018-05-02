@@ -161,7 +161,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RenderEngine\Classes\Material.cpp" />
     <ClCompile Include="MyApplication.cpp" />
-    <ClCompile Include="RenderEngine\Classes\RenderMesh.cpp" />
+    <ClCompile Include="RenderEngine\Classes\MeshRenderer.cpp" />
+    <ClCompile Include="RenderEngine\Classes\RendererEngine.cpp" />
     <ClCompile Include="RenderEngine\Classes\Shader.cpp" />
     <ClCompile Include="RenderEngine\Classes\Mesh.cpp" />
     <ClCompile Include="RenderEngine\Classes\Time.cpp" />
@@ -184,7 +185,8 @@
     <ClInclude Include="RenderEngine\Classes\Material.h" />
     <ClInclude Include="RenderEngine\Classes\Mesh.h" />
     <ClInclude Include="MyApplication.h" />
-    <ClInclude Include="RenderEngine\Classes\RenderMesh.h" />
+    <ClInclude Include="RenderEngine\Classes\RendererEngine.h" />
+    <ClInclude Include="RenderEngine\Classes\MeshRenderer.h" />
     <ClInclude Include="RenderEngine\Classes\Shader.h" />
     <ClInclude Include="RenderEngine\Classes\Time.h" />
     <ClInclude Include="RenderEngine\Classes\Math\T_Vector2.h" />

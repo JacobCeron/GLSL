@@ -2,15 +2,20 @@
 
 #include <string>
 #include <map>
+#include <vector>
 #include "Transform.h"
 
 class GameObject
 {
 public:
 	Transform transform;
+
+	static std::vector<GameObject*> gameObjects;
 private:
 	std::string m_name;
 	std::map<std::string, Component*> components;
+
+	
 
 public:
 	GameObject();
@@ -28,6 +33,7 @@ public:
 	friend bool operator!=(const GameObject& left, const GameObject& right);
 
 	friend class Component;
+	friend class RendererEngine;
 };
 
 template<typename T>

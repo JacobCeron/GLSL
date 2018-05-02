@@ -27,9 +27,6 @@
     <ClCompile Include="RenderEngine\Classes\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RenderEngine\Classes\RenderMesh.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="RenderEngine\Classes\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -84,6 +81,12 @@
     <ClCompile Include="RenderEngine\Classes\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RenderEngine\Classes\MeshRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderEngine\Classes\RendererEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RenderEngine\Classes\ElementBuffer.h">
@@ -93,9 +96,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RenderEngine\Classes\Mesh.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderEngine\Classes\RenderMesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RenderEngine\Classes\Shader.h">
@@ -159,6 +159,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RenderEngine\Classes\Behaviour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderEngine\Classes\RendererEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderEngine\Classes\MeshRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

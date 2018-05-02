@@ -1,15 +1,15 @@
 #include <glad\glad.h>
 
-#include "RenderMesh.h"
+#include "MeshRenderer.h"
 
 #include <iostream>
 
-RenderMesh::RenderMesh()
+MeshRenderer::MeshRenderer()
 {
 
 }
 
-void RenderMesh::init()
+void MeshRenderer::init()
 {
 	m_vA.init();
 
@@ -40,7 +40,7 @@ void RenderMesh::init()
 	m_vA.unbind();
 }
 
-void RenderMesh::draw()
+void MeshRenderer::draw()
 {
 	m_vA.bind();
 	glDrawElements(GL_TRIANGLES, mesh.index.size() * Vector3ui::size, GL_UNSIGNED_INT, 0);

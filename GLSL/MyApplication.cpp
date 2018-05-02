@@ -1,21 +1,21 @@
 #include <glad\glad.h>
 
 #include "MyApplication.h"
+
 #include "RenderEngine/Classes/Time.h"
 #include "RenderEngine/Classes/Camera.h"
-
-#include <glm\glm.hpp>
-#include <glm\gtc\matrix_transform.hpp>
-
-#include <iostream>
+#include "RenderEngine/Classes/MeshRenderer.h"
+#include "RenderEngine/Classes/Transform.h"
 
 MyApplication::MyApplication(int width, int height, const char * name)
 	: CoreEngine(width, height, name)
-{}
+{
+}
 
-RenderMesh* renderMesh;
+MeshRenderer* meshRenderer;
 Camera* cam;
 
+float speed{ 6.0f };
 
 void MyApplication::Start()
 {
@@ -26,21 +26,20 @@ void MyApplication::Start()
 	Mesh mesh;
 	mesh.loadModel("C:/Users/UserHp/Desktop/Models/torus.obj");
 
-	renderMesh = mainObj.addComponent<RenderMesh>();
-	renderMesh->mesh = mesh;
-	renderMesh->material.shader = shaderObj;
-	renderMesh->init();
+	meshRenderer = mainObj.addComponent<MeshRenderer>();
+	meshRenderer->mesh = mesh;
+	meshRenderer->material.shader = shaderObj;
 
-	camera.transform.Translate(Vector3(0.0f, 0.0f, -3.0f));
+	camera.transform.Translate(Vector3(0.0f, 0.0f, 3.0f));
 	camera.transform.localScale = Vector3(1.0f);
 	cam = camera.addComponent<Camera>();
 }
 
 void MyApplication::Update()
 {
-	m_window.color(Vector3(0.5f, 0.5f, 0.5f));
-
-	renderMesh->material.shader.use();
-	renderMesh->material.setMatrix(1, Camera::current->getProjectionMatrix() * Camera::current->getViewMatrix() * mainObj.transform.getWorldToLocalMatrix());
-	renderMesh->draw();
+	mainObj.transform.Rotate(Vector3(1.0f, 1.0f, 1.0f));
+	if (Input::getKey(KeyCode::RightArrow))
+		mainObj.transform.Translate(Vector3(Vector3::right * Time::deltaTime * speed));
+	if (Input::getKey(KeyCode::LeftArrow))
+		mainObj.transform.Translate(Vector3(-Vector3::right * Time::deltaTime * speed));
 }

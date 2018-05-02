@@ -27,7 +27,7 @@ public:
 	Shader();
 	void compileShader(const char* shadeSource, ShaderType type);
 	void linkProgram();
-	void use();
+//	void use(); // Inside Renderer Engine
 	const unsigned int id() const;
 	~Shader();
 
@@ -52,4 +52,7 @@ public:
 private:
 	void error(unsigned int shader, ShaderType type = static_cast<ShaderType>(-1));
 	int chooseType(ShaderType type);
+	void use();
+
+	friend class RendererEngine;
 };
